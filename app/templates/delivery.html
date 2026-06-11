@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Доставка — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Доставка конкурентов</h2>
+
+<div class="actions">
+    <form action="/prices/check-delivery" method="post" class="inline">
+        <button type="submit">Проверить доставку</button>
+    </form>
+</div>
+
+{% if snapshots %}
+<table>
+    <thead>
+        <tr>
+            <th>Конкурент</th>
+            <th>Цена доставки</th>
+            <th>Условия</th>
+            <th>Дата проверки</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for snap in snapshots %}
+        <tr>
+            <td>{{ snap.competitor.name }}</td>
+            <td>
+                {% if snap.delivery_price is not none %}
+                {{ "%.2f"|format(snap.delivery_price) }} ₽
+                {% else %}—{% endif %}
+            </td>
+            <td>{{ snap.description or "—" }}</td>
+            <td>{{ snap.checked_at.strftime("%d.%m.%Y %H:%M") }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Данные о доставке отсутствуют. Нажмите «Проверить доставку».</p>
+{% endif %}
+{% endblock %}

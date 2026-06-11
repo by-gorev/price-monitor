@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Competitor Monitor{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Competitor Monitor — мониторинг цен на шары</h1>
+    </header>
+    <nav>
+        <a href="/">Dashboard</a>
+        <a href="/competitors">Конкуренты</a>
+        <a href="/products">Товары</a>
+        <a href="/matching">Сопоставление</a>
+        <a href="/prices/history">История цен</a>
+        <a href="/delivery">Доставка</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        Competitor Monitor v0.1 — каркас приложения
+    </footer>
+</body>
+</html>

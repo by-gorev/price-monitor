@@ -1,0 +1,228 @@
+/* Простые стили для competitor-monitor */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f6f8;
+    color: #333;
+    line-height: 1.5;
+}
+
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 1rem 2rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+nav {
+    background: #34495e;
+    padding: 0.5rem 2rem;
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    padding: 0.3rem 0;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+}
+
+h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2980b9;
+}
+
+.stat-card .label {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.stat-card.up .value { color: #e74c3c; }
+.stat-card.down .value { color: #27ae60; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+th {
+    background: #ecf0f1;
+    font-weight: 600;
+}
+
+tr:hover {
+    background: #f9f9f9;
+}
+
+.positive { color: #e74c3c; }
+.negative { color: #27ae60; }
+
+form.inline {
+    display: inline;
+}
+
+button, .btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .btn:hover {
+    background: #2980b9;
+}
+
+button.danger { background: #e74c3c; }
+button.danger:hover { background: #c0392b; }
+
+button.success { background: #27ae60; }
+button.success:hover { background: #219a52; }
+
+button.secondary { background: #95a5a6; }
+button.secondary:hover { background: #7f8c8d; }
+
+.form-section {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h3 {
+    margin-top: 0;
+}
+
+.form-row {
+    margin-bottom: 0.8rem;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+}
+
+.actions {
+    margin: 1rem 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    background: #ecf0f1;
+}
+
+.badge.unmatched { background: #fdebd0; color: #d35400; }
+.badge.auto { background: #d5f5e3; color: #1e8449; }
+.badge.manual { background: #d6eaf8; color: #1a5276; }
+.badge.ignored { background: #f2f3f4; color: #7f8c8d; }
+
+.matching-row {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.matching-row .product-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.matching-row .suggestion {
+    flex: 1;
+    min-width: 200px;
+    color: #7f8c8d;
+}
+
+.matching-row .buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.alert {
+    background: #d6eaf8;
+    border: 1px solid #aed6f1;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #95a5a6;
+    font-size: 0.85rem;
+}

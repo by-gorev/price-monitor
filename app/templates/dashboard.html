@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<div class="actions">
+    <form action="/prices/check" method="post" class="inline">
+        <button type="submit">Проверить цены</button>
+    </form>
+    <form action="/matching/auto" method="post" class="inline">
+        <button type="submit" class="secondary">Авто-сопоставление</button>
+    </form>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="value">{{ stats.prices_checked_today }}</div>
+        <div class="label">Цен проверено сегодня</div>
+    </div>
+    <div class="stat-card up">
+        <div class="value">{{ stats.increased }}</div>
+        <div class="label">Товаров подорожало</div>
+    </div>
+    <div class="stat-card down">
+        <div class="value">{{ stats.decreased }}</div>
+        <div class="label">Товаров подешевело</div>
+    </div>
+    <div class="stat-card up">
+        <div class="value">{{ stats.my_higher }}</div>
+        <div class="label">Моя цена выше</div>
+    </div>
+    <div class="stat-card down">
+        <div class="value">{{ stats.my_lower }}</div>
+        <div class="label">Моя цена ниже</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.unmatched_count }}</div>
+        <div class="label">Без сопоставления</div>
+    </div>
+</div>
+
+{% if stats.unmatched_count > 0 %}
+<div class="alert">
+    Есть {{ stats.unmatched_count }} товар(ов) конкурентов без сопоставления.
+    <a href="/matching">Перейти к сопоставлению</a>
+</div>
+{% endif %}
+
+<h3>Сравнение цен с конкурентами</h3>
+{% if stats.comparisons %}
+<table>
+    <thead>
+        <tr>
+            <th>Мой товар</th>
+            <th>Конкурент</th>
+            <th>Товар конкурента</th>
+            <th>Моя цена</th>
+            <th>Цена конкурента</th>
+            <th>Разница</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in stats.comparisons %}
+        <tr>
+            <td>{{ item.my_product_name }}</td>
+            <td>{{ item.competitor_name }}</td>
+            <td>{{ item.competitor_product_name }}</td>
+            <td>{{ "%.2f"|format(item.my_price) }} ₽</td>
+            <td>{{ "%.2f"|format(item.competitor_price) }} ₽</td>
+            <td class="{% if item.diff > 0 %}positive{% elif item.diff < 0 %}negative{% endif %}">
+                {% if item.diff > 0 %}+{% endif %}{{ "%.2f"|format(item.diff) }} ₽
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Нет данных для сравнения. Добавьте товары и запустите проверку цен.</p>
+{% endif %}
+
+<h3>Последние изменения цен</h3>
+{% if stats.price_changes %}
+<table>
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Конкурент</th>
+            <th>Было</th>
+            <th>Стало</th>
+            <th>Изменение</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in stats.price_changes %}
+        <tr>
+            <td>{{ item.product_name }}</td>
+            <td>{{ item.competitor_name }}</td>
+            <td>{{ "%.2f"|format(item.old_price) }} ₽</td>
+            <td>{{ "%.2f"|format(item.new_price) }} ₽</td>
+            <td class="{% if item.change_rub > 0 %}positive{% else %}negative{% endif %}">
+                {% if item.change_rub > 0 %}+{% endif %}{{ "%.2f"|format(item.change_rub) }} ₽
+                ({{ item.change_pct }}%)
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Изменений цен пока нет.</p>
+{% endif %}
+{% endblock %}

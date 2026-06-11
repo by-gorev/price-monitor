@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Окружение
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Alembic
+# (versions/ коммитим)

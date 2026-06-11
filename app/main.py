@@ -1,0 +1,25 @@
+"""
+Точка входа FastAPI-приложения competitor-monitor.
+Мониторинг цен конкурентов на воздушные шары.
+"""
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+from app.routers import competitors, dashboard, delivery, matching, prices, products
+
+app = FastAPI(
+    title="Competitor Monitor",
+    description="Мониторинг цен конкурентов на воздушные шары",
+    version="0.1.0",
+)
+
+# Подключаем роутеры
+app.include_router(dashboard.router)
+app.include_router(competitors.router)
+app.include_router(products.router)
+app.include_router(matching.router)
+app.include_router(prices.router)
+app.include_router(delivery.router)
+
+# Статические файлы (CSS)
+app.mount("/static", StaticFiles(directory="app/static"), name="static")

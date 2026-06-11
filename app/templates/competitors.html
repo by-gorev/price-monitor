@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Конкуренты — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Конкуренты</h2>
+
+<div class="form-section">
+    <h3>Добавить конкурента</h3>
+    <form action="/competitors/add" method="post">
+        <div class="form-row">
+            <label for="name">Название</label>
+            <input type="text" id="name" name="name" required placeholder="Например: ШарикМаркет">
+        </div>
+        <div class="form-row">
+            <label for="website_url">Сайт</label>
+            <input type="url" id="website_url" name="website_url" required placeholder="https://example.com">
+        </div>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<h3>Список конкурентов</h3>
+{% if competitors %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Сайт</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in competitors %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.name }}</td>
+            <td><a href="{{ c.website_url }}" target="_blank">{{ c.website_url }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Конкурентов пока нет. Добавьте первого выше.</p>
+{% endif %}
+{% endblock %}

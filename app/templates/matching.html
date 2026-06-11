@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Сопоставление — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Сопоставление товаров</h2>
+
+<div class="actions">
+    <form action="/matching/auto" method="post" class="inline">
+        <button type="submit">Запустить авто-сопоставление</button>
+    </form>
+</div>
+
+<p>Товары конкурентов без связи с нашими эталонными товарами:</p>
+
+{% if suggestions %}
+    {% for item in suggestions %}
+    <div class="matching-row">
+        <div class="product-info">
+            <strong>{{ item.competitor_product.name }}</strong><br>
+            <small>Конкурент: {{ item.competitor_product.competitor.name }}</small>
+        </div>
+        <div class="suggestion">
+            {% if item.suggested_product %}
+            Предположение: <strong>{{ item.suggested_product.name }}</strong>
+            ({{ item.confidence_score }}%)
+            {% else %}
+            Подходящий товар не найден
+            {% endif %}
+        </div>
+        <div class="buttons">
+            {% if item.suggested_product %}
+            <form action="/matching/confirm" method="post" class="inline">
+                <input type="hidden" name="competitor_product_id" value="{{ item.competitor_product.id }}">
+                <input type="hidden" name="my_product_id" value="{{ item.suggested_product.id }}">
+                <button type="submit" class="success">Подтвердить</button>
+            </form>
+            {% endif %}
+            <form action="/matching/manual" method="post" class="inline">
+                <input type="hidden" name="competitor_product_id" value="{{ item.competitor_product.id }}">
+                <select name="my_product_id" required>
+                    <option value="">— выбрать товар —</option>
+                    {% for mp in my_products %}
+                    <option value="{{ mp.id }}">{{ mp.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Выбрать вручную</button>
+            </form>
+            <form action="/matching/ignore" method="post" class="inline">
+                <input type="hidden" name="competitor_product_id" value="{{ item.competitor_product.id }}">
+                <button type="submit" class="danger">Игнорировать</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+<p>Все товары сопоставлены или помечены как игнорируемые.</p>
+{% endif %}
+{% endblock %}

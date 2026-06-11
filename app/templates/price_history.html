@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}История цен — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>История цен</h2>
+
+{% if history %}
+<table>
+    <thead>
+        <tr>
+            <th>Мой товар</th>
+            <th>Конкурент</th>
+            <th>Название у конкурента</th>
+            <th>Старая цена</th>
+            <th>Новая цена</th>
+            <th>Изменение ₽</th>
+            <th>Изменение %</th>
+            <th>Дата проверки</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in history %}
+        <tr>
+            <td>{{ item.my_product_name }}</td>
+            <td>{{ item.competitor_name }}</td>
+            <td>{{ item.competitor_product_name }}</td>
+            <td>{{ "%.2f"|format(item.old_price) }} ₽</td>
+            <td>{{ "%.2f"|format(item.new_price) }} ₽</td>
+            <td class="{% if item.change_rub > 0 %}positive{% elif item.change_rub < 0 %}negative{% endif %}">
+                {% if item.change_rub > 0 %}+{% endif %}{{ "%.2f"|format(item.change_rub) }} ₽
+            </td>
+            <td class="{% if item.change_pct > 0 %}positive{% elif item.change_pct < 0 %}negative{% endif %}">
+                {% if item.change_pct > 0 %}+{% endif %}{{ item.change_pct }}%
+            </td>
+            <td>{{ item.checked_at.strftime("%d.%m.%Y %H:%M") }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>История изменений пуста. Запустите проверку цен несколько раз.</p>
+{% endif %}
+{% endblock %}
