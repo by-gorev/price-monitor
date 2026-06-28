@@ -10,33 +10,17 @@
     <form action="/products/category/add" method="post">
         <div class="form-row">
             <label for="cat_name">Название категории</label>
-            <input type="text" id="cat_name" name="name" required placeholder="Латексные шары">
+            <input type="text" id="cat_name" name="name" required placeholder="Латекс пастель">
+        </div>
+        <div class="form-row">
+            <label for="cat_price">Моя цена по категории (₽)</label>
+            <input type="number" id="cat_price" name="my_price" step="0.01" min="0" value="0">
+        </div>
+        <div class="form-row">
+            <label for="cat_keywords">Ключевые слова (через запятую)</label>
+            <input type="text" id="cat_keywords" name="keywords" placeholder="пастель, однотон">
         </div>
         <button type="submit">Добавить категорию</button>
-    </form>
-</div>
-
-<div class="form-section">
-    <h3>Добавить свой товар</h3>
-    <form action="/products/my/add" method="post">
-        <div class="form-row">
-            <label for="my_name">Название</label>
-            <input type="text" id="my_name" name="name" required placeholder="Латексный шар без рисунка 30 см">
-        </div>
-        <div class="form-row">
-            <label for="my_category">Категория</label>
-            <select id="my_category" name="category_id">
-                <option value="">— без категории —</option>
-                {% for cat in categories %}
-                <option value="{{ cat.id }}">{{ cat.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-row">
-            <label for="my_price">Моя цена (₽)</label>
-            <input type="number" id="my_price" name="my_price" step="0.01" min="0" required>
-        </div>
-        <button type="submit">Добавить товар</button>
     </form>
 </div>
 
@@ -72,30 +56,36 @@
     </form>
 </div>
 
-<h3>Мои товары</h3>
-{% if my_products %}
+<h3>Рыночные категории</h3>
+{% if categories %}
 <table>
     <thead>
         <tr>
             <th>ID</th>
-            <th>Название</th>
             <th>Категория</th>
             <th>Моя цена</th>
+            <th>Ключевые слова</th>
         </tr>
     </thead>
     <tbody>
-        {% for p in my_products %}
+        {% for cat in categories %}
         <tr>
-            <td>{{ p.id }}</td>
-            <td>{{ p.name }}</td>
-            <td>{{ p.category.name if p.category else "—" }}</td>
-            <td>{{ "%.2f"|format(p.my_price) }} ₽</td>
+            <td>{{ cat.id }}</td>
+            <td>{{ cat.name }}</td>
+            <td>{{ "%.2f"|format(cat.my_price) }} ₽</td>
+            <td>
+                <form action="/products/category/keywords" method="post" class="inline">
+                    <input type="hidden" name="category_id" value="{{ cat.id }}">
+                    <input type="text" name="keywords" value="{{ cat.keywords or '' }}" style="min-width: 280px;">
+                    <button type="submit">Сохранить</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 {% else %}
-<p>Мои товары не добавлены.</p>
+<p>Категории не добавлены. Запустите seed_data.py или добавьте вручную.</p>
 {% endif %}
 
 <h3>Товары конкурентов</h3>
@@ -107,6 +97,7 @@
             <th>Конкурент</th>
             <th>Название</th>
             <th>Ссылка</th>
+            <th>Категория</th>
             <th>Статус</th>
         </tr>
     </thead>
@@ -121,6 +112,7 @@
                 <a href="{{ p.url }}" target="_blank">ссылка</a>
                 {% else %}—{% endif %}
             </td>
+            <td>{{ p.category.name if p.category else "—" }}</td>
             <td>
                 <span class="badge {% if p.match_status.value == 'UNMATCHED' %}unmatched{% elif p.match_status.value == 'AUTO_MATCHED' %}auto{% elif p.match_status.value == 'MANUAL_MATCHED' %}manual{% else %}ignored{% endif %}">
                     {{ p.match_status.value }}

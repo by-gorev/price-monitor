@@ -1,5 +1,5 @@
 """
-Управление нашими товарами и товарами конкурентов.
+Управление рыночными категориями и товарами конкурентов.
 """
 from fastapi import APIRouter, Depends, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session, joinedload
 from app.database import get_db
 from app.models.competitor import Competitor
 from app.models.enums import MatchStatus
-from app.models.product import CompetitorProduct, MyProduct, ProductCategory
+from app.models.product import CompetitorProduct, ProductCategory
 
 router = APIRouter(prefix="/products")
 templates = Jinja2Templates(directory="app/templates")
@@ -17,13 +17,7 @@ templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/", response_class=HTMLResponse)
 def list_products(request: Request, db: Session = Depends(get_db)):
-    """Страница управления товарами."""
-    my_products = (
-        db.query(MyProduct)
-        .options(joinedload(MyProduct.category))
-        .order_by(MyProduct.name)
-        .all()
-    )
+    """Страница управления категориями и товарами конкурентов."""
     categories = db.query(ProductCategory).order_by(ProductCategory.name).all()
     competitors = db.query(Competitor).order_by(Competitor.name).all()
     competitor_products = (
@@ -39,7 +33,6 @@ def list_products(request: Request, db: Session = Depends(get_db)):
         request=request,
         name="products.html",
         context={
-            "my_products": my_products,
             "categories": categories,
             "competitors": competitors,
             "competitor_products": competitor_products,
@@ -48,32 +41,35 @@ def list_products(request: Request, db: Session = Depends(get_db)):
     )
 
 
-@router.post("/my/add")
-def add_my_product(
+@router.post("/category/add")
+def add_category(
     name: str = Form(...),
-    category_id: str = Form(""),
-    my_price: float = Form(...),
+    my_price: float = Form(0),
+    keywords: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    """Добавить наш эталонный товар."""
-    product = MyProduct(
+    """Добавить рыночную категорию."""
+    category = ProductCategory(
         name=name.strip(),
-        category_id=int(category_id) if category_id else None,
         my_price=my_price,
+        keywords=keywords.strip() or None,
     )
-    db.add(product)
+    db.add(category)
     db.commit()
     return RedirectResponse(url="/products", status_code=303)
 
 
-@router.post("/category/add")
-def add_category(
-    name: str = Form(...),
+@router.post("/category/keywords")
+def update_category_keywords(
+    category_id: int = Form(...),
+    keywords: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    """Добавить категорию товаров."""
-    category = ProductCategory(name=name.strip())
-    db.add(category)
+    """Обновить ключевые слова категории."""
+    category = db.get(ProductCategory, category_id)
+    if not category:
+        raise ValueError("Категория не найдена")
+    category.keywords = keywords.strip() or None
     db.commit()
     return RedirectResponse(url="/products", status_code=303)
 
@@ -87,12 +83,15 @@ def add_competitor_product(
     db: Session = Depends(get_db),
 ):
     """Добавить ссылку конкурента на товар."""
+    cat_id = int(category_id) if category_id else None
     product = CompetitorProduct(
         competitor_id=competitor_id,
         name=name.strip(),
         url=url.strip() if url else None,
-        category_id=int(category_id) if category_id else None,
-        match_status=MatchStatus.UNMATCHED,
+        category_id=cat_id,
+        match_status=(
+            MatchStatus.MANUAL_MATCHED if cat_id else MatchStatus.UNMATCHED
+        ),
     )
     db.add(product)
     db.commit()

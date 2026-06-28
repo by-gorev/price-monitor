@@ -43,7 +43,7 @@
 
 {% if stats.unmatched_count > 0 %}
 <div class="alert">
-    Есть {{ stats.unmatched_count }} товар(ов) конкурентов без сопоставления.
+    Есть {{ stats.unmatched_count }} товар(ов) конкурентов без категории.
     <a href="/matching">Перейти к сопоставлению</a>
 </div>
 {% endif %}
@@ -53,9 +53,9 @@
 <table>
     <thead>
         <tr>
-            <th>Мой товар</th>
+            <th>Категория</th>
             <th>Конкурент</th>
-            <th>Товар конкурента</th>
+            <th>Позиция конкурента</th>
             <th>Моя цена</th>
             <th>Цена конкурента</th>
             <th>Разница</th>
@@ -64,7 +64,7 @@
     <tbody>
         {% for item in stats.comparisons %}
         <tr>
-            <td>{{ item.my_product_name }}</td>
+            <td>{{ item.category_name }}</td>
             <td>{{ item.competitor_name }}</td>
             <td>{{ item.competitor_product_name }}</td>
             <td>{{ "%.2f"|format(item.my_price) }} ₽</td>

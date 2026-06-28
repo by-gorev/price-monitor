@@ -1,5 +1,5 @@
 """
-Страница сопоставления товаров конкурентов с нашими.
+Страница назначения рыночных категорий товарам конкурентов.
 """
 from fastapi import APIRouter, Depends, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -8,11 +8,11 @@ from sqlalchemy.orm import Session, joinedload
 
 from app.database import get_db
 from app.models.enums import MatchStatus, MatchType
-from app.models.product import CompetitorProduct, MyProduct
+from app.models.product import CompetitorProduct, ProductCategory
 from app.services.matching import (
     auto_match_products,
-    confirm_match,
-    get_suggested_match,
+    confirm_category,
+    get_suggested_category,
     ignore_product,
 )
 
@@ -22,10 +22,7 @@ templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/", response_class=HTMLResponse)
 def matching_page(request: Request, db: Session = Depends(get_db)):
-    """
-    Список несопоставленных товаров конкурентов
-    с предполагаемым нашим товаром.
-    """
+    """Товары конкурентов без назначенной категории."""
     unmatched = (
         db.query(CompetitorProduct)
         .options(joinedload(CompetitorProduct.competitor))
@@ -34,26 +31,25 @@ def matching_page(request: Request, db: Session = Depends(get_db)):
         .all()
     )
 
-    # Для каждого товара — предполагаемое сопоставление
     suggestions = []
     for product in unmatched:
-        suggested, score = get_suggested_match(db, product)
+        suggested, score = get_suggested_category(db, product)
         suggestions.append(
             {
                 "competitor_product": product,
-                "suggested_product": suggested,
+                "suggested_category": suggested,
                 "confidence_score": round(score * 100, 1) if suggested else 0,
             }
         )
 
-    my_products = db.query(MyProduct).order_by(MyProduct.name).all()
+    categories = db.query(ProductCategory).order_by(ProductCategory.name).all()
 
     return templates.TemplateResponse(
         request=request,
         name="matching.html",
         context={
             "suggestions": suggestions,
-            "my_products": my_products,
+            "categories": categories,
         },
     )
 
@@ -61,14 +57,14 @@ def matching_page(request: Request, db: Session = Depends(get_db)):
 @router.post("/confirm")
 def confirm_matching(
     competitor_product_id: int = Form(...),
-    my_product_id: int = Form(...),
+    category_id: int = Form(...),
     db: Session = Depends(get_db),
 ):
-    """Подтвердить предложенное сопоставление."""
-    confirm_match(
+    """Подтвердить предложенную категорию."""
+    confirm_category(
         db,
         competitor_product_id=competitor_product_id,
-        my_product_id=my_product_id,
+        category_id=category_id,
         match_type=MatchType.MANUAL,
     )
     return RedirectResponse(url="/matching", status_code=303)
@@ -77,14 +73,14 @@ def confirm_matching(
 @router.post("/manual")
 def manual_matching(
     competitor_product_id: int = Form(...),
-    my_product_id: int = Form(...),
+    category_id: int = Form(...),
     db: Session = Depends(get_db),
 ):
-    """Выбрать сопоставление вручную из списка."""
-    confirm_match(
+    """Выбрать категорию вручную."""
+    confirm_category(
         db,
         competitor_product_id=competitor_product_id,
-        my_product_id=my_product_id,
+        category_id=category_id,
         match_type=MatchType.MANUAL,
     )
     return RedirectResponse(url="/matching", status_code=303)
@@ -102,6 +98,6 @@ def ignore_matching(
 
 @router.post("/auto")
 def run_auto_matching(db: Session = Depends(get_db)):
-    """Запустить автоматическое сопоставление по названиям."""
+    """Запустить автоматическое назначение категорий."""
     auto_match_products(db)
     return RedirectResponse(url="/matching", status_code=303)

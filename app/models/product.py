@@ -1,5 +1,5 @@
 """
-Модели товаров, сопоставлений и снимков цен.
+Модели товаров, категорий и снимков цен.
 """
 from datetime import datetime
 
@@ -7,53 +7,41 @@ from sqlalchemy import DateTime, Enum, ForeignKey, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
-from app.models.enums import MatchStatus, MatchType
+from app.models.enums import MatchStatus
 
 
 class ProductCategory(Base):
-    """Категория товаров (например: латексные шары, фольгированные)."""
+    """Рыночная категория — единица сравнения цен."""
 
     __tablename__ = "product_categories"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    # Наша ориентировочная цена по категории
+    my_price: Mapped[float] = mapped_column(Numeric(10, 2), nullable=False, default=0)
+    # Ключевые слова через запятую для авто-сопоставления
+    keywords: Mapped[str | None] = mapped_column(Text, nullable=True)
 
-    my_products: Mapped[list["MyProduct"]] = relationship(back_populates="category")
     competitor_products: Mapped[list["CompetitorProduct"]] = relationship(
         back_populates="category"
     )
 
 
-class MyProduct(Base):
-    """Наш эталонный товар — к нему привязываются товары конкурентов."""
-
-    __tablename__ = "my_products"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(500), nullable=False)
-    category_id: Mapped[int | None] = mapped_column(
-        ForeignKey("product_categories.id"), nullable=True
-    )
-    my_price: Mapped[float] = mapped_column(Numeric(10, 2), nullable=False, default=0)
-
-    category: Mapped["ProductCategory | None"] = relationship(back_populates="my_products")
-    matches: Mapped[list["ProductMatch"]] = relationship(back_populates="my_product")
-
-
 class CompetitorProduct(Base):
-    """Товар конкурента на его сайте."""
+    """Товар или позиция конкурента на его сайте."""
 
     __tablename__ = "competitor_products"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     competitor_id: Mapped[int] = mapped_column(ForeignKey("competitors.id"), nullable=False)
+    # Привязка к рыночной категории (основная связь вместо ProductMatch)
     category_id: Mapped[int | None] = mapped_column(
         ForeignKey("product_categories.id"), nullable=True
     )
     name: Mapped[str] = mapped_column(String(500), nullable=False)
     url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
-    # JSON-строка с настройками CSS-селекторов для парсинга (добавим позже)
     selector_config: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # UNMATCHED — категория не назначена; AUTO_/MANUAL_MATCHED — категория назначена
     match_status: Mapped[MatchStatus] = mapped_column(
         Enum(MatchStatus, name="match_status_enum"),
         nullable=False,
@@ -64,32 +52,8 @@ class CompetitorProduct(Base):
     category: Mapped["ProductCategory | None"] = relationship(
         back_populates="competitor_products"
     )
-    matches: Mapped[list["ProductMatch"]] = relationship(
-        back_populates="competitor_product"
-    )
     price_snapshots: Mapped[list["PriceSnapshot"]] = relationship(
         back_populates="competitor_product"
-    )
-
-
-class ProductMatch(Base):
-    """Связь между нашим товаром и товаром конкурента."""
-
-    __tablename__ = "product_matches"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    my_product_id: Mapped[int] = mapped_column(ForeignKey("my_products.id"), nullable=False)
-    competitor_product_id: Mapped[int] = mapped_column(
-        ForeignKey("competitor_products.id"), nullable=False, unique=True
-    )
-    match_type: Mapped[MatchType] = mapped_column(
-        Enum(MatchType, name="match_type_enum"), nullable=False
-    )
-    confidence_score: Mapped[float | None] = mapped_column(Numeric(5, 2), nullable=True)
-
-    my_product: Mapped["MyProduct"] = relationship(back_populates="matches")
-    competitor_product: Mapped["CompetitorProduct"] = relationship(
-        back_populates="matches"
     )
 
 

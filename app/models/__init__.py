@@ -3,13 +3,7 @@
 """
 from app.models.competitor import Competitor, DeliverySnapshot
 from app.models.enums import MatchStatus, MatchType
-from app.models.product import (
-    CompetitorProduct,
-    MyProduct,
-    PriceSnapshot,
-    ProductCategory,
-    ProductMatch,
-)
+from app.models.product import CompetitorProduct, PriceSnapshot, ProductCategory
 
 __all__ = [
     "Competitor",
@@ -17,8 +11,6 @@ __all__ = [
     "MatchStatus",
     "MatchType",
     "CompetitorProduct",
-    "MyProduct",
     "PriceSnapshot",
     "ProductCategory",
-    "ProductMatch",
 ]

@@ -9,7 +9,7 @@
 <table>
     <thead>
         <tr>
-            <th>Мой товар</th>
+            <th>Категория</th>
             <th>Конкурент</th>
             <th>Название у конкурента</th>
             <th>Старая цена</th>
@@ -22,7 +22,7 @@
     <tbody>
         {% for item in history %}
         <tr>
-            <td>{{ item.my_product_name }}</td>
+            <td>{{ item.category_name }}</td>
             <td>{{ item.competitor_name }}</td>
             <td>{{ item.competitor_product_name }}</td>
             <td>{{ "%.2f"|format(item.old_price) }} ₽</td>
