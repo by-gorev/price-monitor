@@ -1,5 +1,6 @@
 """
-Сервис для расчёта статистики на главной странице (dashboard).
+Сервис для расчёта статистики на главной странице (dashboard)
+и агрегированного сравнения цен по рыночным категориям.
 """
 from datetime import date, datetime
 
@@ -7,7 +8,143 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session, joinedload
 
 from app.models.enums import MatchStatus
-from app.models.product import CompetitorProduct, PriceSnapshot
+from app.models.product import CompetitorProduct, PriceSnapshot, ProductCategory
+
+MATCHED_STATUSES = (MatchStatus.AUTO_MATCHED, MatchStatus.MANUAL_MATCHED)
+
+
+def _latest_snapshot(db: Session, product_id: int) -> PriceSnapshot | None:
+    """Последний снимок цены для товара."""
+    return (
+        db.query(PriceSnapshot)
+        .filter(PriceSnapshot.competitor_product_id == product_id)
+        .order_by(PriceSnapshot.checked_at.desc())
+        .first()
+    )
+
+
+def get_category_comparisons(db: Session) -> list[dict]:
+    """
+    Сравнение по рыночным категориям: одна строка на категорию
+    с агрегированными ценами конкурентов.
+    """
+    products = (
+        db.query(CompetitorProduct)
+        .options(
+            joinedload(CompetitorProduct.competitor),
+            joinedload(CompetitorProduct.category),
+        )
+        .filter(
+            CompetitorProduct.match_status.in_(MATCHED_STATUSES),
+            CompetitorProduct.category_id.isnot(None),
+        )
+        .all()
+    )
+
+    grouped: dict[int, dict] = {}
+
+    for product in products:
+        category = product.category
+        if not category:
+            continue
+
+        snapshot = _latest_snapshot(db, product.id)
+        if not snapshot:
+            continue
+
+        price = float(snapshot.price)
+        checked_at = snapshot.checked_at
+
+        if category.id not in grouped:
+            grouped[category.id] = {
+                "category_id": category.id,
+                "category_name": category.name,
+                "my_price": float(category.my_price),
+                "prices": [],
+                "last_checked_at": None,
+            }
+
+        entry = grouped[category.id]
+        entry["prices"].append(price)
+        if entry["last_checked_at"] is None or checked_at > entry["last_checked_at"]:
+            entry["last_checked_at"] = checked_at
+
+    comparisons = []
+    for entry in grouped.values():
+        prices = entry.pop("prices")
+        entry["product_count"] = len(prices)
+        entry["min_price"] = min(prices)
+        entry["max_price"] = max(prices)
+        entry["avg_price"] = round(sum(prices) / len(prices), 2)
+        entry["diff_vs_avg"] = round(entry["my_price"] - entry["avg_price"], 2)
+        comparisons.append(entry)
+
+    return sorted(comparisons, key=lambda x: abs(x["diff_vs_avg"]), reverse=True)
+
+
+def get_category_comparison_detail(db: Session, category_id: int) -> dict | None:
+    """Детали категории: сводка и список товаров конкурентов с ценами."""
+    category = db.get(ProductCategory, category_id)
+    if not category:
+        return None
+
+    products = (
+        db.query(CompetitorProduct)
+        .options(joinedload(CompetitorProduct.competitor))
+        .filter(
+            CompetitorProduct.category_id == category_id,
+            CompetitorProduct.match_status.in_(MATCHED_STATUSES),
+        )
+        .order_by(CompetitorProduct.name)
+        .all()
+    )
+
+    product_rows = []
+    prices: list[float] = []
+    last_checked_at: datetime | None = None
+
+    for product in products:
+        snapshot = _latest_snapshot(db, product.id)
+        price = float(snapshot.price) if snapshot else None
+        checked_at = snapshot.checked_at if snapshot else None
+
+        if price is not None:
+            prices.append(price)
+        if checked_at and (last_checked_at is None or checked_at > last_checked_at):
+            last_checked_at = checked_at
+
+        product_rows.append(
+            {
+                "id": product.id,
+                "name": product.name,
+                "competitor_name": product.competitor.name,
+                "url": product.url,
+                "price": price,
+                "checked_at": checked_at,
+            }
+        )
+
+    summary = {
+        "category_id": category.id,
+        "category_name": category.name,
+        "my_price": float(category.my_price),
+        "product_count": len(prices),
+        "min_price": min(prices) if prices else None,
+        "max_price": max(prices) if prices else None,
+        "avg_price": round(sum(prices) / len(prices), 2) if prices else None,
+        "last_checked_at": last_checked_at,
+        "diff_vs_avg": (
+            round(float(category.my_price) - sum(prices) / len(prices), 2)
+            if prices
+            else None
+        ),
+    }
+
+    return {
+        "category": category,
+        "summary": summary,
+        "products": product_rows,
+    }
 
 
 def get_dashboard_stats(db: Session) -> dict:
@@ -25,9 +162,9 @@ def get_dashboard_stats(db: Session) -> dict:
     increased = sum(1 for c in price_changes if c["change_rub"] > 0)
     decreased = sum(1 for c in price_changes if c["change_rub"] < 0)
 
-    comparisons = _get_price_comparisons(db)
-    my_higher = sum(1 for c in comparisons if c["diff"] > 0)
-    my_lower = sum(1 for c in comparisons if c["diff"] < 0)
+    comparisons = get_category_comparisons(db)
+    my_higher = sum(1 for c in comparisons if c["diff_vs_avg"] > 0)
+    my_lower = sum(1 for c in comparisons if c["diff_vs_avg"] < 0)
 
     unmatched_count = (
         db.query(func.count(CompetitorProduct.id))
@@ -87,59 +224,6 @@ def _get_price_changes(db: Session) -> list[dict]:
         )
 
     return sorted(changes, key=lambda x: abs(x["change_rub"]), reverse=True)
-
-
-def _get_price_comparisons(db: Session) -> list[dict]:
-    """
-    Сравнить нашу цену по категории с ценами конкурентов
-    в той же категории.
-    """
-    comparisons = []
-    products = (
-        db.query(CompetitorProduct)
-        .options(
-            joinedload(CompetitorProduct.competitor),
-            joinedload(CompetitorProduct.category),
-        )
-        .filter(
-            CompetitorProduct.match_status.in_(
-                [MatchStatus.AUTO_MATCHED, MatchStatus.MANUAL_MATCHED]
-            ),
-            CompetitorProduct.category_id.isnot(None),
-        )
-        .all()
-    )
-
-    for comp_product in products:
-        category = comp_product.category
-        if not category:
-            continue
-
-        last_snapshot = (
-            db.query(PriceSnapshot)
-            .filter(PriceSnapshot.competitor_product_id == comp_product.id)
-            .order_by(PriceSnapshot.checked_at.desc())
-            .first()
-        )
-        if not last_snapshot:
-            continue
-
-        my_price = float(category.my_price)
-        comp_price = float(last_snapshot.price)
-        diff = my_price - comp_price
-
-        comparisons.append(
-            {
-                "category_name": category.name,
-                "competitor_name": comp_product.competitor.name,
-                "competitor_product_name": comp_product.name,
-                "my_price": my_price,
-                "competitor_price": comp_price,
-                "diff": diff,
-            }
-        )
-
-    return sorted(comparisons, key=lambda x: abs(x["diff"]), reverse=True)
 
 
 def get_price_history(db: Session) -> list[dict]:

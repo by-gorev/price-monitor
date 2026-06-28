@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.services.dashboard import get_dashboard_stats
+from app.services.market_analysis import get_attention_categories
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -20,5 +21,8 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
-        context={"stats": stats},
+        context={
+            "stats": stats,
+            "attention_categories": get_attention_categories(db, limit=5),
+        },
     )

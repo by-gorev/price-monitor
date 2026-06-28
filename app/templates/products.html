@@ -6,25 +6,6 @@
 <h2>Товары</h2>
 
 <div class="form-section">
-    <h3>Добавить категорию</h3>
-    <form action="/products/category/add" method="post">
-        <div class="form-row">
-            <label for="cat_name">Название категории</label>
-            <input type="text" id="cat_name" name="name" required placeholder="Латекс пастель">
-        </div>
-        <div class="form-row">
-            <label for="cat_price">Моя цена по категории (₽)</label>
-            <input type="number" id="cat_price" name="my_price" step="0.01" min="0" value="0">
-        </div>
-        <div class="form-row">
-            <label for="cat_keywords">Ключевые слова (через запятую)</label>
-            <input type="text" id="cat_keywords" name="keywords" placeholder="пастель, однотон">
-        </div>
-        <button type="submit">Добавить категорию</button>
-    </form>
-</div>
-
-<div class="form-section">
     <h3>Добавить товар конкурента</h3>
     <form action="/products/competitor/add" method="post">
         <div class="form-row">
@@ -65,27 +46,34 @@
             <th>Категория</th>
             <th>Моя цена</th>
             <th>Ключевые слова</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         {% for cat in categories %}
         <tr>
-            <td>{{ cat.id }}</td>
-            <td>{{ cat.name }}</td>
-            <td>{{ "%.2f"|format(cat.my_price) }} ₽</td>
-            <td>
-                <form action="/products/category/keywords" method="post" class="inline">
-                    <input type="hidden" name="category_id" value="{{ cat.id }}">
-                    <input type="text" name="keywords" value="{{ cat.keywords or '' }}" style="min-width: 280px;">
+            <form action="/products/category/update" method="post" style="display: contents">
+                <input type="hidden" name="category_id" value="{{ cat.id }}">
+                <td>{{ cat.id }}</td>
+                <td>{{ cat.name }}</td>
+                <td>
+                    <input type="number" name="my_price" step="0.01" min="0"
+                           value="{{ cat.my_price }}" style="width: 100px;">
+                </td>
+                <td>
+                    <input type="text" name="keywords" value="{{ cat.keywords or '' }}"
+                           style="min-width: 280px;" placeholder="пастель, однотон">
+                </td>
+                <td>
                     <button type="submit">Сохранить</button>
-                </form>
-            </td>
+                </td>
+            </form>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 {% else %}
-<p>Категории не добавлены. Запустите seed_data.py или добавьте вручную.</p>
+<p>Категории не добавлены. Запустите seed_data.py.</p>
 {% endif %}
 
 <h3>Товары конкурентов</h3>

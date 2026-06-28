@@ -16,6 +16,7 @@ from app.models.product import ProductCategory
 APP_TABLES = (
     "price_snapshots",
     "competitor_products",
+    "competitor_categories",
     "delivery_snapshots",
     "product_categories",
     "competitors",

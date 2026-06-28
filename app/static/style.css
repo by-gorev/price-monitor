@@ -106,6 +106,60 @@ tr:hover {
 .positive { color: #e74c3c; }
 .negative { color: #27ae60; }
 
+/* Индикация отклонения моей цены от средней */
+tr.price-good td { background-color: #eafaf1; }
+tr.price-neutral td { background-color: #fef9e7; }
+tr.price-bad td { background-color: #fdedec; }
+
+tr.price-good .deviation-cell { color: #27ae60; font-weight: 600; }
+tr.price-neutral .deviation-cell { color: #d68910; font-weight: 600; }
+tr.price-bad .deviation-cell { color: #e74c3c; font-weight: 600; }
+
+.market-details-row td {
+    background: #fafbfc;
+    padding-top: 0;
+    border-bottom: 2px solid #dfe6e9;
+}
+
+.market-details {
+    margin: 0.25rem 0 0.5rem;
+}
+
+.market-details summary {
+    cursor: pointer;
+    color: #2980b9;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.competitor-price-list {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+}
+
+.competitor-price-list li {
+    display: flex;
+    justify-content: space-between;
+    max-width: 320px;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.competitor-price-list .competitor-name {
+    font-weight: 500;
+}
+
+.competitor-price-list .competitor-price {
+    color: #2c3e50;
+}
+
+.hint {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+}
+
 form.inline {
     display: inline;
 }

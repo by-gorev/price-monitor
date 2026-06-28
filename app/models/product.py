@@ -25,6 +25,9 @@ class ProductCategory(Base):
     competitor_products: Mapped[list["CompetitorProduct"]] = relationship(
         back_populates="category"
     )
+    competitor_categories: Mapped[list["CompetitorCategory"]] = relationship(
+        back_populates="product_category"
+    )
 
 
 class CompetitorProduct(Base):

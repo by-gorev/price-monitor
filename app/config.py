@@ -21,3 +21,6 @@ APP_PORT = int(os.getenv("APP_PORT", "8082"))
 
 # Задержка между HTTP-запросами при парсинге (секунды)
 REQUEST_DELAY_SECONDS = 2
+
+# Подробный debug-вывод при сканировании категорий
+SCANNER_DEBUG = os.getenv("SCANNER_DEBUG", "true").lower() in ("1", "true", "yes")

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Категории конкурентов — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Категории конкурентов</h2>
+
+<p>Укажите URL страницы категории на сайте конкурента. После сканирования товары
+будут добавлены в базу, категория определится по keywords, цены обновятся автоматически.</p>
+
+<div class="form-section">
+    <h3>Добавить URL категории</h3>
+    <form action="/competitor-categories/add" method="post">
+        <div class="form-row">
+            <label for="competitor_id">Конкурент</label>
+            <select id="competitor_id" name="competitor_id" required>
+                {% for c in competitors %}
+                <option value="{{ c.id }}">{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="product_category_id">Рыночная категория</label>
+            <select id="product_category_id" name="product_category_id" required>
+                {% for cat in categories %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="category_url">URL страницы категории</label>
+            <input type="url" id="category_url" name="category_url" required
+                   placeholder="https://bestballoonn.ru/folgirovannye-shary-cifry">
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+<h3>Сохранённые категории</h3>
+{% if entries %}
+<table>
+    <thead>
+        <tr>
+            <th>Конкурент</th>
+            <th>Рыночная категория</th>
+            <th>URL</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in entries %}
+        <tr>
+            <td>{{ e.competitor.name }}</td>
+            <td>{{ e.product_category.name }}</td>
+            <td><a href="{{ e.category_url }}" target="_blank">ссылка</a></td>
+            <td>
+                <form action="/competitor-categories/scan" method="post" class="inline">
+                    <input type="hidden" name="competitor_category_id" value="{{ e.id }}">
+                    <button type="submit">Сканировать</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>URL категорий не добавлены.</p>
+{% endif %}
+{% endblock %}

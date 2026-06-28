@@ -1,0 +1,40 @@
+<table>
+    <thead>
+        <tr>
+            <th>Категория</th>
+            <th>Товаров</th>
+            <th>Моя цена</th>
+            <th>Мин.</th>
+            <th>Макс.</th>
+            <th>Средняя</th>
+            <th>Разница (ср.)</th>
+            <th>Последняя проверка</th>
+            {% if show_details_link %}
+            <th></th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in comparisons %}
+        <tr>
+            <td>{{ item.category_name }}</td>
+            <td>{{ item.product_count }}</td>
+            <td>{{ "%.2f"|format(item.my_price) }} ₽</td>
+            <td>{{ "%.2f"|format(item.min_price) }} ₽</td>
+            <td>{{ "%.2f"|format(item.max_price) }} ₽</td>
+            <td>{{ "%.2f"|format(item.avg_price) }} ₽</td>
+            <td class="{% if item.diff_vs_avg > 0 %}positive{% elif item.diff_vs_avg < 0 %}negative{% endif %}">
+                {% if item.diff_vs_avg > 0 %}+{% endif %}{{ "%.2f"|format(item.diff_vs_avg) }} ₽
+            </td>
+            <td>
+                {% if item.last_checked_at %}
+                {{ item.last_checked_at.strftime("%d.%m.%Y %H:%M") }}
+                {% else %}—{% endif %}
+            </td>
+            {% if show_details_link %}
+            <td><a href="/prices/categories/{{ item.category_id }}">Детали</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

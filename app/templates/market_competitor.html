@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ competitor.name }} — Анализ рынка{% endblock %}
+
+{% block content %}
+<p><a href="/market">← К анализу рынка</a></p>
+
+<h2>{{ competitor.name }}</h2>
+
+{% if last_checked_at %}
+<p>Последняя проверка: {{ last_checked_at.strftime("%d.%m.%Y %H:%M") }}</p>
+{% endif %}
+
+{% if categories %}
+<table>
+    <thead>
+        <tr>
+            <th>Категория</th>
+            <th>Моя цена</th>
+            <th>Цена конкурента</th>
+            <th>Разница</th>
+            <th>Средняя рынка</th>
+            <th>Мин. рынка</th>
+            <th>Макс. рынка</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in categories %}
+        <tr class="{{ row.indicator_class }}">
+            <td>{{ row.category_name }}</td>
+            <td>{{ "%.2f"|format(row.my_price) }} ₽</td>
+            <td>{{ "%.2f"|format(row.competitor_price) }} ₽</td>
+            <td>
+                {% if row.diff > 0 %}+{% endif %}{{ "%.2f"|format(row.diff) }} ₽
+            </td>
+            <td>{{ "%.2f"|format(row.market_avg) }} ₽</td>
+            <td>{{ "%.2f"|format(row.market_min) }} ₽</td>
+            <td>{{ "%.2f"|format(row.market_max) }} ₽</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Нет данных по категориям для этого конкурента.</p>
+{% endif %}
+{% endblock %}

@@ -5,7 +5,16 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from app.routers import competitors, dashboard, delivery, matching, prices, products
+from app.routers import (
+    competitor_categories,
+    competitors,
+    dashboard,
+    delivery,
+    market,
+    matching,
+    prices,
+    products,
+)
 
 app = FastAPI(
     title="Competitor Monitor",
@@ -15,9 +24,11 @@ app = FastAPI(
 
 # Подключаем роутеры
 app.include_router(dashboard.router)
+app.include_router(competitor_categories.router)
 app.include_router(competitors.router)
 app.include_router(products.router)
 app.include_router(matching.router)
+app.include_router(market.router)
 app.include_router(prices.router)
 app.include_router(delivery.router)
 

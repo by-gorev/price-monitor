@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Сравнение цен — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Сравнение цен по категориям</h2>
+
+<p>Одна строка на рыночную категорию. Цены конкурентов агрегированы по всем
+сопоставленным товарам в категории.</p>
+
+{% if comparisons %}
+{% with comparisons=comparisons, show_details_link=true %}
+{% include "_category_comparison_table.html" %}
+{% endwith %}
+{% else %}
+<p>Нет данных для сравнения. Добавьте товары и запустите проверку цен.</p>
+{% endif %}
+{% endblock %}

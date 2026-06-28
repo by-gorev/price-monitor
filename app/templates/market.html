@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Анализ рынка — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Анализ рынка</h2>
+
+<h3>Категории</h3>
+{% if categories %}
+<table>
+    <thead>
+        <tr>
+            <th>Категория</th>
+            <th>Моя цена</th>
+            <th>Средняя цена</th>
+            <th>Минимальная</th>
+            <th>Максимальная</th>
+            <th>Конкурентов</th>
+            <th>Отклонение (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cat in categories %}
+        <tr class="{{ cat.indicator_class }}">
+            <td>{{ cat.category_name }}</td>
+            <td>{{ "%.2f"|format(cat.my_price) }} ₽</td>
+            <td>{{ "%.2f"|format(cat.avg_price) }} ₽</td>
+            <td>{{ "%.2f"|format(cat.min_price) }} ₽</td>
+            <td>{{ "%.2f"|format(cat.max_price) }} ₽</td>
+            <td>{{ cat.competitor_count }}</td>
+            <td class="deviation-cell">
+                {% if cat.deviation_pct is not none %}
+                {% if cat.deviation_pct > 0 %}+{% endif %}{{ cat.deviation_pct }}%
+                {% else %}—{% endif %}
+            </td>
+        </tr>
+        <tr class="market-details-row">
+            <td colspan="7">
+                <details class="market-details">
+                    <summary>▼ показать конкурентов</summary>
+                    <ul class="competitor-price-list">
+                        {% for comp in cat.competitors %}
+                        <li>
+                            <span class="competitor-name">{{ comp.competitor_name }}</span>
+                            <span class="competitor-price">{{ "%.2f"|format(comp.price) }} ₽</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </details>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Нет данных для анализа. Добавьте товары и запустите проверку цен.</p>
+{% endif %}
+
+<h3>Конкуренты</h3>
+{% if competitors %}
+<table>
+    <thead>
+        <tr>
+            <th>Конкурент</th>
+            <th>Категорий</th>
+            <th>Среднее отклонение (%)</th>
+            <th>Мин. отклонение (%)</th>
+            <th>Макс. отклонение (%)</th>
+            <th>Последняя проверка</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comp in competitors %}
+        <tr>
+            <td>{{ comp.competitor_name }}</td>
+            <td>{{ comp.category_count }}</td>
+            <td>
+                {% if comp.avg_deviation_pct is not none %}
+                {% if comp.avg_deviation_pct > 0 %}+{% endif %}{{ comp.avg_deviation_pct }}%
+                {% else %}—{% endif %}
+            </td>
+            <td>
+                {% if comp.min_deviation_pct is not none %}
+                {% if comp.min_deviation_pct > 0 %}+{% endif %}{{ comp.min_deviation_pct }}%
+                {% else %}—{% endif %}
+            </td>
+            <td>
+                {% if comp.max_deviation_pct is not none %}
+                {% if comp.max_deviation_pct > 0 %}+{% endif %}{{ comp.max_deviation_pct }}%
+                {% else %}—{% endif %}
+            </td>
+            <td>
+                {% if comp.last_checked_at %}
+                {{ comp.last_checked_at.strftime("%d.%m.%Y %H:%M") }}
+                {% else %}—{% endif %}
+            </td>
+            <td>
+                <a href="/market/competitors/{{ comp.competitor_id }}" class="btn">Детали</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p class="hint">Отклонение: цена конкурента относительно моей цены по категории.</p>
+{% else %}
+<p>Конкуренты с ценами не найдены.</p>
+{% endif %}
+{% endblock %}

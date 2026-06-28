@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}{{ summary.category_name }} — Competitor Monitor{% endblock %}
+
+{% block content %}
+<p><a href="/prices/compare">← К сравнению цен</a></p>
+
+<h2>{{ summary.category_name }}</h2>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="value">{{ summary.product_count }}</div>
+        <div class="label">Товаров с ценой</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ "%.2f"|format(summary.my_price) }} ₽</div>
+        <div class="label">Моя цена</div>
+    </div>
+    <div class="stat-card down">
+        <div class="value">{{ "%.2f"|format(summary.min_price) if summary.min_price is not none else "—" }} ₽</div>
+        <div class="label">Мин. у конкурентов</div>
+    </div>
+    <div class="stat-card up">
+        <div class="value">{{ "%.2f"|format(summary.max_price) if summary.max_price is not none else "—" }} ₽</div>
+        <div class="label">Макс. у конкурентов</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ "%.2f"|format(summary.avg_price) if summary.avg_price is not none else "—" }} ₽</div>
+        <div class="label">Средняя у конкурентов</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">
+            {% if summary.last_checked_at %}
+            {{ summary.last_checked_at.strftime("%d.%m.%Y %H:%M") }}
+            {% else %}—{% endif %}
+        </div>
+        <div class="label">Последняя проверка</div>
+    </div>
+</div>
+
+<h3>Товары конкурентов в категории</h3>
+{% if products %}
+<table>
+    <thead>
+        <tr>
+            <th>Конкурент</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Проверено</th>
+            <th>Ссылка</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.competitor_name }}</td>
+            <td>{{ p.name }}</td>
+            <td>
+                {% if p.price is not none %}
+                {{ "%.2f"|format(p.price) }} ₽
+                {% else %}—{% endif %}
+            </td>
+            <td>
+                {% if p.checked_at %}
+                {{ p.checked_at.strftime("%d.%m.%Y %H:%M") }}
+                {% else %}—{% endif %}
+            </td>
+            <td>
+                {% if p.url %}
+                <a href="{{ p.url }}" target="_blank">открыть</a>
+                {% else %}—{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>В категории нет сопоставленных товаров.</p>
+{% endif %}
+{% endblock %}

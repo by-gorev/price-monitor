@@ -41,34 +41,18 @@ def list_products(request: Request, db: Session = Depends(get_db)):
     )
 
 
-@router.post("/category/add")
-def add_category(
-    name: str = Form(...),
-    my_price: float = Form(0),
-    keywords: str = Form(""),
-    db: Session = Depends(get_db),
-):
-    """Добавить рыночную категорию."""
-    category = ProductCategory(
-        name=name.strip(),
-        my_price=my_price,
-        keywords=keywords.strip() or None,
-    )
-    db.add(category)
-    db.commit()
-    return RedirectResponse(url="/products", status_code=303)
-
-
-@router.post("/category/keywords")
-def update_category_keywords(
+@router.post("/category/update")
+def update_category(
     category_id: int = Form(...),
+    my_price: float = Form(...),
     keywords: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    """Обновить ключевые слова категории."""
+    """Обновить цену и ключевые слова категории."""
     category = db.get(ProductCategory, category_id)
     if not category:
         raise ValueError("Категория не найдена")
+    category.my_price = my_price
     category.keywords = keywords.strip() or None
     db.commit()
     return RedirectResponse(url="/products", status_code=303)

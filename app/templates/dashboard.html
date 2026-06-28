@@ -29,11 +29,11 @@
     </div>
     <div class="stat-card up">
         <div class="value">{{ stats.my_higher }}</div>
-        <div class="label">Моя цена выше</div>
+        <div class="label">Категорий: моя цена выше</div>
     </div>
     <div class="stat-card down">
         <div class="value">{{ stats.my_lower }}</div>
-        <div class="label">Моя цена ниже</div>
+        <div class="label">Категорий: моя цена ниже</div>
     </div>
     <div class="stat-card">
         <div class="value">{{ stats.unmatched_count }}</div>
@@ -48,36 +48,41 @@
 </div>
 {% endif %}
 
-<h3>Сравнение цен с конкурентами</h3>
-{% if stats.comparisons %}
+<h3>Категории, требующие внимания</h3>
+{% if attention_categories %}
 <table>
     <thead>
         <tr>
             <th>Категория</th>
-            <th>Конкурент</th>
-            <th>Позиция конкурента</th>
             <th>Моя цена</th>
-            <th>Цена конкурента</th>
-            <th>Разница</th>
+            <th>Средняя</th>
+            <th>Мин.</th>
+            <th>Макс.</th>
+            <th>Отклонение (%)</th>
+            <th>Конкурентов</th>
         </tr>
     </thead>
     <tbody>
-        {% for item in stats.comparisons %}
-        <tr>
-            <td>{{ item.category_name }}</td>
-            <td>{{ item.competitor_name }}</td>
-            <td>{{ item.competitor_product_name }}</td>
-            <td>{{ "%.2f"|format(item.my_price) }} ₽</td>
-            <td>{{ "%.2f"|format(item.competitor_price) }} ₽</td>
-            <td class="{% if item.diff > 0 %}positive{% elif item.diff < 0 %}negative{% endif %}">
-                {% if item.diff > 0 %}+{% endif %}{{ "%.2f"|format(item.diff) }} ₽
+        {% for cat in attention_categories %}
+        <tr class="{{ cat.indicator_class }}">
+            <td>{{ cat.category_name }}</td>
+            <td>{{ "%.2f"|format(cat.my_price) }} ₽</td>
+            <td>{{ "%.2f"|format(cat.avg_price) }} ₽</td>
+            <td>{{ "%.2f"|format(cat.min_price) }} ₽</td>
+            <td>{{ "%.2f"|format(cat.max_price) }} ₽</td>
+            <td>
+                {% if cat.deviation_pct is not none %}
+                {% if cat.deviation_pct > 0 %}+{% endif %}{{ cat.deviation_pct }}%
+                {% else %}—{% endif %}
             </td>
+            <td>{{ cat.competitor_count }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<p><a href="/market">Полный анализ рынка →</a></p>
 {% else %}
-<p>Нет данных для сравнения. Добавьте товары и запустите проверку цен.</p>
+<p>Нет данных для анализа. Добавьте товары и запустите проверку цен.</p>
 {% endif %}
 
 <h3>Последние изменения цен</h3>
