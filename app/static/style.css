@@ -237,6 +237,41 @@ button.secondary:hover { background: #7f8c8d; }
 .badge.manual { background: #d6eaf8; color: #1a5276; }
 .badge.ignored { background: #f2f3f4; color: #7f8c8d; }
 
+.filter-bar {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-bar select {
+    padding: 0.35rem 0.5rem;
+}
+
+.products-table select {
+    min-width: 180px;
+    max-width: 220px;
+    padding: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.products-table .inline-form {
+    margin: 0;
+}
+
+.products-table .category-hint {
+    font-size: 0.9rem;
+    color: #566573;
+}
+
+.products-table .text-muted {
+    color: #95a5a6;
+}
+
+.products-table tr.row-manual td:nth-child(7) {
+    font-weight: 600;
+}
+
 .matching-row {
     background: #fff;
     padding: 1rem;

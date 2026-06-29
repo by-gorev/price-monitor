@@ -2,40 +2,36 @@
 Абстрактный интерфейс парсера сайта конкурента.
 """
 from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
 
-from app.parsers.debug import ScanDebugContext
+from app.parsers.parser_types import (
+    ParsedProduct,
+    ParserRunResult,
+    ScanResult,
+    ScannedItem,
+    StrategyResult,
+)
 
+if TYPE_CHECKING:
+    from app.parsers.debug import ScanDebugContext
 
-@dataclass
-class ScannedItem:
-    """Товар, найденный при сканировании категории."""
-
-    name: str
-    url: str
-
-
-@dataclass
-class ScanResult:
-    """Результат сканирования страницы категории."""
-
-    items: list[ScannedItem] = field(default_factory=list)
-    strategy: str | None = None
-    rejected_links: int = 0
-
-
-@dataclass
-class ParsedProduct:
-    """Результат парсинга страницы товара."""
-
-    name: str
-    price: float
+# Обратная совместимость импортов из app.parsers.base
+__all__ = [
+    "BaseSiteParser",
+    "ParsedProduct",
+    "ParserRunResult",
+    "ScanResult",
+    "ScannedItem",
+    "StrategyResult",
+]
 
 
 class BaseSiteParser(ABC):
     """Базовый адаптер CMS. Каждая реализация инкапсулирует логику одной платформы."""
 
     name: str = "base"
+    platform: str = "Unknown"
+    priority: int = 50
 
     @abstractmethod
     def detect(self, url: str, html: str | None = None) -> bool:
@@ -43,7 +39,7 @@ class BaseSiteParser(ABC):
 
     @abstractmethod
     def scan_category(
-        self, url: str, debug: ScanDebugContext | None = None
+        self, url: str, debug: "ScanDebugContext | None" = None
     ) -> ScanResult:
         """Найти товары на странице категории."""
 

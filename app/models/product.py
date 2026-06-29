@@ -3,7 +3,7 @@
 """
 from datetime import datetime
 
-from sqlalchemy import DateTime, Enum, ForeignKey, Numeric, String, Text
+from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
@@ -23,7 +23,12 @@ class ProductCategory(Base):
     keywords: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     competitor_products: Mapped[list["CompetitorProduct"]] = relationship(
-        back_populates="category"
+        back_populates="category",
+        foreign_keys="CompetitorProduct.category_id",
+    )
+    auto_competitor_products: Mapped[list["CompetitorProduct"]] = relationship(
+        back_populates="auto_category",
+        foreign_keys="CompetitorProduct.auto_category_id",
     )
     competitor_categories: Mapped[list["CompetitorCategory"]] = relationship(
         back_populates="product_category"
@@ -41,6 +46,14 @@ class CompetitorProduct(Base):
     category_id: Mapped[int | None] = mapped_column(
         ForeignKey("product_categories.id"), nullable=True
     )
+    # Категория, определённая автоматически при сканировании (для отображения)
+    auto_category_id: Mapped[int | None] = mapped_column(
+        ForeignKey("product_categories.id"), nullable=True
+    )
+    # Если True — сканирование не меняет category_id и match_status
+    manual_override: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False
+    )
     name: Mapped[str] = mapped_column(String(500), nullable=False)
     url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
     selector_config: Mapped[str | None] = mapped_column(Text, nullable=True)
@@ -53,7 +66,12 @@ class CompetitorProduct(Base):
 
     competitor: Mapped["Competitor"] = relationship(back_populates="products")
     category: Mapped["ProductCategory | None"] = relationship(
-        back_populates="competitor_products"
+        back_populates="competitor_products",
+        foreign_keys=[category_id],
+    )
+    auto_category: Mapped["ProductCategory | None"] = relationship(
+        back_populates="auto_competitor_products",
+        foreign_keys=[auto_category_id],
     )
     price_snapshots: Mapped[list["PriceSnapshot"]] = relationship(
         back_populates="competitor_product"

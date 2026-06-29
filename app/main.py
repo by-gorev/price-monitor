@@ -5,6 +5,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+from app.parsers.debug_router import router as parser_debug_router
 from app.routers import (
     competitor_categories,
     competitors,
@@ -31,6 +32,7 @@ app.include_router(matching.router)
 app.include_router(market.router)
 app.include_router(prices.router)
 app.include_router(delivery.router)
+app.include_router(parser_debug_router)
 
 # Статические файлы (CSS)
 app.mount("/static", StaticFiles(directory="app/static"), name="static")

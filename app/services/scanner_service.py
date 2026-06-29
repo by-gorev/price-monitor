@@ -29,6 +29,7 @@ def _upsert_competitor_product(
     Возвращает (товар, created).
     """
     category = find_category_by_keywords(item.name, categories)
+    auto_cat_id = category.id if category else None
     existing = (
         db.query(CompetitorProduct)
         .filter(
@@ -41,19 +42,24 @@ def _upsert_competitor_product(
     if existing:
         existing.name = item.name
         existing.url = item.url
-        if category:
-            existing.category_id = category.id
-            existing.match_status = MatchStatus.AUTO_MATCHED
+        existing.auto_category_id = auto_cat_id
+        if not existing.manual_override:
+            existing.category_id = auto_cat_id
+            existing.match_status = (
+                MatchStatus.AUTO_MATCHED if auto_cat_id else MatchStatus.UNMATCHED
+            )
         return existing, False
 
     product = CompetitorProduct(
         competitor_id=competitor_id,
         name=item.name,
         url=item.url,
-        category_id=category.id if category else None,
+        category_id=auto_cat_id,
+        auto_category_id=auto_cat_id,
         match_status=(
-            MatchStatus.AUTO_MATCHED if category else MatchStatus.UNMATCHED
+            MatchStatus.AUTO_MATCHED if auto_cat_id else MatchStatus.UNMATCHED
         ),
+        manual_override=False,
         selector_config=selector_config,
     )
     db.add(product)
@@ -65,6 +71,8 @@ def _update_prices(db: Session, products: list[CompetitorProduct]) -> int:
     """Обновить цены через parser_service для поддерживаемого конкурента."""
     updated = 0
     for product in products:
+        if product.match_status == MatchStatus.IGNORED:
+            continue
         if not product.url or not product.competitor:
             continue
         if not is_supported_competitor(product.competitor):

@@ -28,6 +28,7 @@
             <label for="comp_category">Категория</label>
             <select id="comp_category" name="category_id">
                 <option value="">— без категории —</option>
+                <option value="{{ ignored_value }}">Не учитывать</option>
                 {% for cat in categories %}
                 <option value="{{ cat.id }}">{{ cat.name }}</option>
                 {% endfor %}
@@ -77,8 +78,18 @@
 {% endif %}
 
 <h3>Товары конкурентов</h3>
+
+<form class="filter-bar" method="get" action="/products">
+    <label for="product_filter">Показать:</label>
+    <select id="product_filter" name="filter" onchange="this.form.submit()">
+        {% for key, label in product_filters.items() %}
+        <option value="{{ key }}" {% if key == current_filter %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+    </select>
+</form>
+
 {% if competitor_products %}
-<table>
+<table class="products-table">
     <thead>
         <tr>
             <th>ID</th>
@@ -86,12 +97,14 @@
             <th>Название</th>
             <th>Ссылка</th>
             <th>Категория</th>
+            <th>Авто</th>
+            <th>Установлено</th>
             <th>Статус</th>
         </tr>
     </thead>
     <tbody>
         {% for p in competitor_products %}
-        <tr>
+        <tr class="{% if p.manual_override %}row-manual{% endif %}">
             <td>{{ p.id }}</td>
             <td>{{ p.competitor.name }}</td>
             <td>{{ p.name }}</td>
@@ -100,10 +113,42 @@
                 <a href="{{ p.url }}" target="_blank">ссылка</a>
                 {% else %}—{% endif %}
             </td>
-            <td>{{ p.category.name if p.category else "—" }}</td>
+            <td>
+                <form action="/products/competitor/{{ p.id }}/category" method="post" class="inline-form">
+                    <input type="hidden" name="filter" value="{{ current_filter }}">
+                    <select name="category_value" onchange="this.form.submit()">
+                        <option value="" {% if p.match_status.value != 'IGNORED' and not p.category_id %}selected{% endif %}>
+                            — без категории —
+                        </option>
+                        <option value="{{ ignored_value }}" {% if p.match_status.value == 'IGNORED' %}selected{% endif %}>
+                            Не учитывать
+                        </option>
+                        {% for cat in categories %}
+                        <option value="{{ cat.id }}"
+                            {% if p.category_id == cat.id and p.match_status.value != 'IGNORED' %}selected{% endif %}>
+                            {{ cat.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </td>
+            <td class="category-hint">
+                {{ p.auto_category.name if p.auto_category else "—" }}
+            </td>
+            <td class="category-hint">
+                {% if p.match_status.value == 'IGNORED' %}
+                    <span class="text-muted">Не учитывать</span>
+                {% elif p.manual_override %}
+                    {{ p.category.name if p.category else "—" }}
+                {% elif p.match_status.value == 'AUTO_MATCHED' and p.category %}
+                    <span class="text-muted">{{ p.category.name }} (авто)</span>
+                {% else %}
+                    —
+                {% endif %}
+            </td>
             <td>
                 <span class="badge {% if p.match_status.value == 'UNMATCHED' %}unmatched{% elif p.match_status.value == 'AUTO_MATCHED' %}auto{% elif p.match_status.value == 'MANUAL_MATCHED' %}manual{% else %}ignored{% endif %}">
-                    {{ p.match_status.value }}
+                    {{ match_status_labels[p.match_status] }}
                 </span>
             </td>
         </tr>
@@ -111,6 +156,6 @@
     </tbody>
 </table>
 {% else %}
-<p>Товары конкурентов не добавлены.</p>
+<p>Нет товаров по выбранному фильтру.</p>
 {% endif %}
 {% endblock %}

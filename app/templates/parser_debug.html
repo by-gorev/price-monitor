@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Диагностика парсеров — Competitor Monitor{% endblock %}
+
+{% block content %}
+<h2>Диагностика парсеров</h2>
+
+{% if last_summary %}
+<div class="form-section">
+    <h3>Последнее сканирование — сводка</h3>
+    <table>
+        <tbody>
+            <tr><th>CMS</th><td>{{ last_summary.cms or "—" }}</td></tr>
+            <tr><th>Parser</th><td>{{ last_summary.parser or "—" }}</td></tr>
+            <tr><th>Strategy</th><td>{{ last_summary.strategy or "—" }}</td></tr>
+            <tr><th>Найдено товаров</th><td>{{ last_summary.found }}</td></tr>
+            <tr><th>Уникальных</th><td>{{ last_summary.unique }}</td></tr>
+            <tr><th>С ценой</th><td>{{ last_summary.with_price }}</td></tr>
+            <tr><th>Без цены</th><td>{{ last_summary.without_price }}</td></tr>
+            <tr><th>Confidence</th><td>{{ last_summary.confidence }}</td></tr>
+            <tr><th>Ошибок</th><td>{{ last_summary.errors }}</td></tr>
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+<h3>История запусков</h3>
+{% if history %}
+{% for run in history %}
+<div class="matching-row" style="display:block; margin-bottom:1.5rem;">
+    <p><strong>URL:</strong> <a href="{{ run.url }}" target="_blank">{{ run.url }}</a></p>
+    <p>
+        <strong>{{ run.timestamp.strftime("%d.%m.%Y %H:%M:%S") }}</strong> —
+        CMS: {{ run.platform }} |
+        Parser: {{ run.parser_name }} |
+        Strategy: {{ run.strategy_name or "—" }} |
+        Confidence: {{ run.confidence }} |
+        Товаров: {{ run.products_found }} |
+        С ценой: {{ run.prices_found }} |
+        Без цены: {{ run.without_price }} |
+        {{ run.elapsed_ms }} мс
+    </p>
+    {% if run.errors %}
+    <p class="positive">Ошибки: {{ run.errors | join("; ") }}</p>
+    {% endif %}
+
+    <details>
+        <summary>Последовательность Parser / стратегий</summary>
+        {% for attempt in run.parser_attempts %}
+        <div style="margin:0.5rem 0 0.5rem 1rem;">
+            <strong>{{ attempt.parser_name }}</strong> ({{ attempt.platform }})
+            — confidence {{ attempt.confidence }},
+            товаров {{ attempt.products_found }},
+            CMS detected: {{ "да" if attempt.cms_detected else "нет" }}
+            <ul>
+                {% for s in attempt.strategies %}
+                <li>
+                    {{ s.strategy_name }}:
+                    conf={{ s.confidence }},
+                    n={{ s.products_found }},
+                    prices={{ s.prices_found }},
+                    {{ s.elapsed_ms }} мс
+                    {% if s.accepted %}✓{% endif %}
+                    {% if s.error %}— {{ s.error }}{% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </details>
+</div>
+{% endfor %}
+{% else %}
+<p>Запусков парсера пока не было. Выполните сканирование категории конкурента.</p>
+{% endif %}
+{% endblock %}
