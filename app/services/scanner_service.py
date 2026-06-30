@@ -11,6 +11,13 @@ from app.models.enums import MatchStatus
 from app.models.product import CompetitorProduct, ProductCategory
 from app.parsers.debug import ScanDebugContext
 from app.parsers.registry import get_parser_for_url
+from app.parsers.scan_diagnostics import format_scan_error
+from app.parsers.fetch_diagnostics import (
+    begin_fetch_diagnostics,
+    end_fetch_diagnostics,
+    trace_fetch_skip,
+)
+from app.parsers.http import base_url_from
 from app.services.matching import find_category_by_keywords
 from app.services.parser_service import is_supported_competitor, parse_and_save
 
@@ -72,13 +79,23 @@ def _update_prices(db: Session, products: list[CompetitorProduct]) -> int:
     updated = 0
     for product in products:
         if product.match_status == MatchStatus.IGNORED:
+            trace_fetch_skip(product.url or "", "ignored_product")
             continue
         if not product.url or not product.competitor:
+            trace_fetch_skip(product.url or "", "no_url_or_competitor")
             continue
         if not is_supported_competitor(product.competitor):
+            trace_fetch_skip(product.url, "unsupported_competitor")
             continue
         if parse_and_save(db, product):
             updated += 1
+        else:
+            from app.parsers.fetch_diagnostics import get_fetch_diagnostics
+
+            diag = get_fetch_diagnostics()
+            trace = diag._resolve(product.url) if diag else None
+            if trace and trace.http_status is None and not trace.skip_reason:
+                trace_fetch_skip(product.url, "parse_and_save_failed")
     return updated
 
 
@@ -105,20 +122,40 @@ def scan_category(db: Session, competitor_category_id: int) -> dict:
     debug = ScanDebugContext(enabled=SCANNER_DEBUG)
     debug.url = comp_category.category_url
 
-    parser = get_parser_for_url(comp_category.category_url, debug=debug)
-    selector_config = parser.default_selector_config() if parser else None
+    items: list = []
+    scan_debug: dict = {}
+    scan_error: str | None = None
+    selector_config = None
 
-    if parser:
-        result = parser.scan_category(comp_category.category_url, debug=debug)
-        items = result.items
-        debug.finish(len(items))
+    try:
+        parser = get_parser_for_url(comp_category.category_url, debug=debug)
+        selector_config = parser.default_selector_config() if parser else None
+
+        if parser:
+            result = parser.scan_category(comp_category.category_url, debug=debug)
+            items = result.items
+            scan_error = getattr(result, "error", None)
+            debug.finish(len(items), scan_error=scan_error)
+            scan_debug = debug.to_dict()
+            scan_debug["strategy"] = result.strategy
+            scan_debug["rejected_links"] = result.rejected_links
+            scan_debug["diagnostics"] = getattr(result, "diagnostics_summary", {})
+        else:
+            debug.finish(0)
+            scan_debug = debug.to_dict()
+    except Exception as exc:
+        scan_error = format_scan_error(exc)
+        logger.error(
+            "Category scan failed for %s: %s",
+            comp_category.category_url,
+            scan_error,
+            exc_info=True,
+        )
+        debug.set_scan_error(scan_error)
+        debug.finish(0, scan_error=scan_error)
         scan_debug = debug.to_dict()
-        scan_debug["strategy"] = result.strategy
-        scan_debug["rejected_links"] = result.rejected_links
-    else:
         items = []
-        debug.finish(0)
-        scan_debug = debug.to_dict()
+
     categories = db.query(ProductCategory).all()
 
     created = 0
@@ -150,7 +187,14 @@ def scan_category(db: Session, competitor_category_id: int) -> dict:
         .filter(CompetitorProduct.id.in_([p.id for p in touched]))
         .all()
     )
+    if items and SCANNER_DEBUG:
+        begin_fetch_diagnostics(
+            [item.url for item in items if item.url],
+            base_url_from(comp_category.category_url),
+        )
     prices_updated = _update_prices(db, touched_with_competitor)
+    if items and SCANNER_DEBUG:
+        end_fetch_diagnostics()
 
     return {
         "found": len(items),
@@ -160,4 +204,5 @@ def scan_category(db: Session, competitor_category_id: int) -> dict:
         "category_name": comp_category.product_category.name,
         "competitor_name": comp_category.competitor.name,
         "scan_debug": scan_debug,
+        "scan_error": scan_error,
     }

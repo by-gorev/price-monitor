@@ -8,6 +8,14 @@
 <p>Укажите URL страницы категории на сайте конкурента. После сканирования товары
 будут добавлены в базу, категория определится по keywords, цены обновятся автоматически.</p>
 
+{% if scan_error %}
+<div class="form-section" style="border-left: 4px solid #e74c3c;">
+    <p><strong>Сканирование не выполнено:</strong> {{ scan_error }}</p>
+    <p>Подробности — в логе, <code>debug_last_links.txt</code> и на странице
+    <a href="/parser-debug">/parser-debug</a>.</p>
+</div>
+{% endif %}
+
 <div class="form-section">
     <h3>Добавить URL категории</h3>
     <form action="/competitor-categories/add" method="post">

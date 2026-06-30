@@ -19,6 +19,21 @@
             <tr><th>Без цены</th><td>{{ last_summary.without_price }}</td></tr>
             <tr><th>Confidence</th><td>{{ last_summary.confidence }}</td></tr>
             <tr><th>Ошибок</th><td>{{ last_summary.errors }}</td></tr>
+            {% if last_summary.error %}
+            <tr><th>Ошибка сканирования</th><td>{{ last_summary.error }}</td></tr>
+            {% endif %}
+            {% if last_summary.funnel %}
+            <tr><th>Воронка</th><td>
+                Found links: {{ last_summary.funnel.links_found or 0 }} →
+                Product URLs: {{ last_summary.funnel.product_urls or 0 }} →
+                Unique: {{ last_summary.funnel.unique or 0 }} →
+                Parsed: {{ last_summary.funnel.parsed or 0 }} →
+                Returned: {{ last_summary.funnel.returned or 0 }}
+                {% if last_summary.funnel.loss_stage %}
+                <br><em>Loss stage: {{ last_summary.funnel.loss_stage }}</em>
+                {% endif %}
+            </td></tr>
+            {% endif %}
         </tbody>
     </table>
 </div>
@@ -60,6 +75,16 @@
                     n={{ s.products_found }},
                     prices={{ s.prices_found }},
                     {{ s.elapsed_ms }} мс
+                    {% if s.funnel %}
+                    <br><small>
+                        links={{ s.funnel.links_found }},
+                        product_urls={{ s.funnel.product_urls }},
+                        unique={{ s.funnel.unique }},
+                        fetched={{ s.funnel.fetched }},
+                        parsed={{ s.funnel.parsed }},
+                        returned={{ s.funnel.returned }}
+                    </small>
+                    {% endif %}
                     {% if s.accepted %}✓{% endif %}
                     {% if s.error %}— {{ s.error }}{% endif %}
                 </li>

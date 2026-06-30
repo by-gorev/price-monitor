@@ -3,8 +3,12 @@
 """
 import logging
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from app.parsers.parser_types import ParserRunResult, StrategyResult
+
+if TYPE_CHECKING:
+    from app.parsers.scan_diagnostics import ScanDiagnosticsCollector
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +41,9 @@ class ScanDebugContext:
         self.messages: list[str] = []
         self.strategy_attempts: list[StrategyResult] = []
         self.parser_attempts: list[ParserRunResult] = []
+        self.diagnostics: ScanDiagnosticsCollector | None = None
+        self.scan_error: str | None = None
+        self.funnel_summary: dict = {}
 
     def set_platform(self, name: str) -> None:
         self.platform = name
@@ -68,6 +75,11 @@ class ScanDebugContext:
     def set_strategy_attempts(self, attempts: list[StrategyResult]) -> None:
         self.strategy_attempts = attempts
 
+    def set_scan_error(self, error: str | None) -> None:
+        self.scan_error = error
+        if error:
+            self._log(f"Ошибка сканирования: {error}")
+
     def record_parser_attempts(self, runs: list[ParserRunResult]) -> None:
         self.parser_attempts = runs
         if not self.enabled:
@@ -78,9 +90,20 @@ class ScanDebugContext:
                 f"товаров={run.products_found}, стратегия={run.strategy_name}"
             )
             for attempt in run.strategy_attempts:
+                funnel = attempt.funnel or {}
+                funnel_line = ""
+                if funnel:
+                    funnel_line = (
+                        f", links={funnel.get('links_found')}, "
+                        f"product_urls={funnel.get('product_urls')}, "
+                        f"unique={funnel.get('unique')}, "
+                        f"parsed={funnel.get('parsed')}, "
+                        f"returned={funnel.get('returned')}"
+                    )
                 self._log(
                     f"    → {attempt.strategy_name}: conf={attempt.confidence}, "
                     f"n={attempt.products_found}, prices={attempt.prices_found}"
+                    f"{funnel_line}"
                     + (f", err={attempt.error}" if attempt.error else "")
                 )
 
@@ -124,7 +147,26 @@ class ScanDebugContext:
         print(f"[SCAN DEBUG] {message}")
         logger.info("[SCAN DEBUG] %s", message)
 
-    def finish(self, items_found: int) -> None:
+    def finish(self, items_found: int, scan_error: str | None = None) -> None:
+        if scan_error:
+            self.set_scan_error(scan_error)
+
+        if self.diagnostics:
+            self.diagnostics.write_links_file(DEBUG_LINKS_PATH)
+            self.diagnostics.log_summary(items_found, scan_error or self.scan_error)
+            if self.diagnostics.strategy_funnels:
+                best = max(self.diagnostics.strategy_funnels, key=lambda f: f.returned)
+                final = self.diagnostics.build_final_funnel(items_found, best)
+                self.funnel_summary = {
+                    "links_found": final.links_found,
+                    "product_urls": final.product_urls,
+                    "unique": final.unique,
+                    "fetched": final.fetched,
+                    "parsed": final.parsed,
+                    "returned": final.returned,
+                    "loss_stage": final.loss_stage,
+                }
+
         if not self.enabled:
             return
 
@@ -134,16 +176,34 @@ class ScanDebugContext:
         self._log(f"Без цены: {self.without_price}")
         self._log(f"Отброшено ссылок: {self.rejected_links}")
 
+        if self.funnel_summary:
+            for key in (
+                "links_found",
+                "product_urls",
+                "unique",
+                "fetched",
+                "parsed",
+                "returned",
+            ):
+                self._log(f"Funnel {key}: {self.funnel_summary.get(key)}")
+            if self.funnel_summary.get("loss_stage"):
+                self._log(f"Loss stage: {self.funnel_summary['loss_stage']}")
+
         if self.sample_urls:
             self._log("Первые URL:")
             for sample_url in self.sample_urls:
                 self._log(f"  - {sample_url}")
 
-        if items_found == 0:
+        if items_found == 0 or self.diagnostics:
             if self.last_html:
                 DEBUG_HTML_PATH.write_text(self.last_html, encoding="utf-8")
                 self._log(f"HTML сохранён: {DEBUG_HTML_PATH}")
-            if self.all_links:
+            if self.diagnostics and DEBUG_LINKS_PATH.exists():
+                self._log(
+                    f"Ссылки сохранены ({len(self.diagnostics.link_records)}): "
+                    f"{DEBUG_LINKS_PATH}"
+                )
+            elif self.all_links:
                 DEBUG_LINKS_PATH.write_text(
                     "\n".join(self.all_links), encoding="utf-8"
                 )
@@ -160,6 +220,10 @@ class ScanDebugContext:
             f"detect={stats.detect_executed}, requests={stats.http_requests}, "
             f"skipped={stats.skipped_requests}"
         )
+        from app.parsers.fetch_diagnostics import DEBUG_FETCH_PATH
+
+        if DEBUG_FETCH_PATH.exists():
+            self._log(f"Fetch diagnostics: {DEBUG_FETCH_PATH}")
 
     def to_dict(self) -> dict:
         return {
@@ -177,6 +241,8 @@ class ScanDebugContext:
             "sample_urls": self.sample_urls,
             "stage": self.stage,
             "elapsed_ms": self.elapsed_ms,
+            "error": self.scan_error,
+            "funnel": self.funnel_summary,
             "summary": {
                 "cms": self.platform,
                 "parser": self.adapter,
@@ -186,5 +252,7 @@ class ScanDebugContext:
                 "with_price": self.prices_found,
                 "without_price": self.without_price,
                 "confidence": self.confidence,
+                "error": self.scan_error,
+                "funnel": self.funnel_summary,
             },
         }

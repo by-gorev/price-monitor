@@ -29,6 +29,7 @@ class StrategyResult:
     raw_candidates: int = 0
     elapsed_ms: float = 0.0
     error: str | None = None
+    funnel: dict = field(default_factory=dict)
 
     @property
     def acceptable(self) -> bool:
@@ -78,6 +79,8 @@ class ScanResult:
     without_price: int = 0
     parser_attempts: list = field(default_factory=list)
     strategy_attempts: list = field(default_factory=list)
+    error: str | None = None
+    diagnostics_summary: dict = field(default_factory=dict)
 
 
 @dataclass

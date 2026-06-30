@@ -15,6 +15,7 @@ class StrategyAttemptRecord:
     elapsed_ms: float
     error: str | None = None
     accepted: bool = False
+    funnel: dict = field(default_factory=dict)
 
 
 @dataclass

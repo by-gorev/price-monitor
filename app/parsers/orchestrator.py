@@ -16,6 +16,19 @@ from app.parsers.debug_store import (
 from app.parsers.domain_cache import get_cached_parser_name
 from app.parsers.http import begin_http_scan, log_http_stats
 from app.parsers.page_context import PageContext
+from app.parsers.scan_diagnostics import format_scan_error
+
+
+def _best_funnel(strategy_attempts: list) -> dict:
+    best: dict = {}
+    best_returned = -1
+    for attempt in strategy_attempts:
+        funnel = getattr(attempt, "funnel", None) or {}
+        returned = funnel.get("returned", 0)
+        if returned > best_returned:
+            best_returned = returned
+            best = funnel
+    return best
 
 
 class OrchestratedParser(BaseSiteParser):
@@ -53,59 +66,108 @@ class OrchestratedParser(BaseSiteParser):
         begin_http_scan()
         started = time.perf_counter()
 
-        ctx = PageContext.load(url, debug=debug, page_type="category")
+        try:
+            ctx = PageContext.load(url, debug=debug, page_type="category")
+            parser = self._primary
+            self._winner = parser
+
+            if debug:
+                debug.set_platform(parser.platform)
+                debug.set_adapter(parser.name)
+
+            run = self._evaluate_parser(parser, url, ctx, debug)
+            runs = [run]
+            elapsed_sec = time.perf_counter() - started
+
+            if debug:
+                debug.set_confidence(run.confidence)
+                debug.record_parser_attempts(runs)
+
+            log_http_stats(platform=parser.platform, elapsed_sec=elapsed_sec)
+
+            elapsed_ms = round(elapsed_sec * 1000, 1)
+            record = self._build_run_record(url, run, runs, elapsed_ms)
+            record_scan_run(record)
+            set_last_scan_summary(record.summary)
+
+            if not run.items:
+                result = ScanResult(
+                    items=[],
+                    parser_name=run.parser_name,
+                    platform=run.platform,
+                    confidence=run.confidence,
+                    parser_attempts=runs,
+                    diagnostics_summary=getattr(
+                        run.strategy_attempts[-1] if run.strategy_attempts else None,
+                        "funnel",
+                        {},
+                    ),
+                )
+                if debug:
+                    debug.finish(0)
+                return result
+
+            from app.parsers.http import cache_listing_prices
+
+            cache_listing_prices(run.items)
+
+            result = ScanResult(
+                items=run.items,
+                strategy=run.strategy_name,
+                parser_name=run.parser_name,
+                platform=run.platform,
+                confidence=run.confidence,
+                rejected_links=run.rejected_links,
+                prices_found=run.prices_found,
+                without_price=run.without_price,
+                parser_attempts=runs,
+            )
+            if debug:
+                debug.finish(len(run.items))
+            return result
+        except Exception as exc:
+            return self._failed_scan(url, debug, exc, time.perf_counter() - started)
+
+    def _failed_scan(
+        self,
+        url: str,
+        debug: ScanDebugContext | None,
+        exc: Exception,
+        elapsed_sec: float,
+    ) -> ScanResult:
+        error = format_scan_error(exc)
         parser = self._primary
-        self._winner = parser
 
         if debug:
             debug.set_platform(parser.platform)
             debug.set_adapter(parser.name)
-
-        run = self._evaluate_parser(parser, url, ctx, debug)
-        runs = [run]
-        elapsed_sec = time.perf_counter() - started
-
-        if debug:
-            debug.set_confidence(run.confidence)
-            debug.record_parser_attempts(runs)
+            debug.set_scan_error(error)
+            debug.finish(0, scan_error=error)
 
         log_http_stats(platform=parser.platform, elapsed_sec=elapsed_sec)
 
-        elapsed_ms = round(elapsed_sec * 1000, 1)
-        record = self._build_run_record(url, run, runs, elapsed_ms)
+        run = ParserRunResult(
+            parser_name=parser.name,
+            platform=parser.platform,
+            products_found=0,
+            strategy_name=None,
+            items=[],
+            strategy_attempts=[],
+            errors=[error],
+        )
+        record = self._build_run_record(url, run, [run], round(elapsed_sec * 1000, 1))
+        record.errors = [error]
+        record.summary["error"] = error
         record_scan_run(record)
         set_last_scan_summary(record.summary)
 
-        if not run.items:
-            result = ScanResult(
-                items=[],
-                parser_name=run.parser_name,
-                platform=run.platform,
-                confidence=run.confidence,
-                parser_attempts=runs,
-            )
-            if debug:
-                debug.finish(0)
-            return result
-
-        from app.parsers.http import cache_listing_prices
-
-        cache_listing_prices(run.items)
-
-        result = ScanResult(
-            items=run.items,
-            strategy=run.strategy_name,
-            parser_name=run.parser_name,
-            platform=run.platform,
-            confidence=run.confidence,
-            rejected_links=run.rejected_links,
-            prices_found=run.prices_found,
-            without_price=run.without_price,
-            parser_attempts=runs,
+        return ScanResult(
+            items=[],
+            parser_name=parser.name,
+            platform=parser.platform,
+            confidence=0.0,
+            error=error,
         )
-        if debug:
-            debug.finish(len(run.items))
-        return result
 
     def parse_product(self, url: str, selector_config: str | None = None):
         parser = self._winner or self._primary
@@ -130,6 +192,7 @@ class OrchestratedParser(BaseSiteParser):
             scan = parser.scan_category(url, debug=debug)
 
         attempts = getattr(scan, "strategy_attempts", [])
+        diag_summary = getattr(scan, "diagnostics_summary", {}) or {}
         run = ParserRunResult(
             parser_name=parser.name,
             platform=parser.platform,
@@ -142,7 +205,7 @@ class OrchestratedParser(BaseSiteParser):
             unique_count=len(scan.items),
             rejected_links=scan.rejected_links,
             cms_detected=cms_detected,
-            errors=[],
+            errors=[scan.error] if getattr(scan, "error", None) else [],
         )
         run.confidence = compute_parser_confidence(run)
         run.success = run.products_found >= 3 and run.confidence >= 0.5
@@ -167,6 +230,7 @@ class OrchestratedParser(BaseSiteParser):
                     elapsed_ms=s.elapsed_ms,
                     error=s.error,
                     accepted=s.success,
+                    funnel=getattr(s, "funnel", {}) or {},
                 )
                 for s in run.strategy_attempts
             ]
@@ -194,6 +258,8 @@ class OrchestratedParser(BaseSiteParser):
             "without_price": best.without_price,
             "confidence": best.confidence,
             "errors": sum(len(r.errors) for r in runs),
+            "error": best.errors[0] if best.errors else None,
+            "funnel": _best_funnel(best.strategy_attempts),
             "duplicates": 0,
             "skipped": 0,
             "created": 0,

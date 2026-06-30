@@ -26,29 +26,49 @@ def collect_candidates(
     candidates: list[tuple[str, str]],
     base: str,
     url_filter: Callable[[str], bool] | None = None,
+    ctx: PageContext | None = None,
 ) -> ScanResult:
     """Собрать уникальные товары из кандидатов (href, name)."""
     seen: set[str] = set()
     items: list[ScannedItem] = []
     rejected = 0
     raw = len(candidates)
+    diag = ctx.diagnostics if ctx else None
 
     for href, name in candidates:
         normalized = normalize_url(href, base)
         if not normalized:
+            if diag:
+                lower = (href or "").strip().lower()
+                if lower.startswith("#"):
+                    diag.trace_collect_reject(href, "anchor")
+                elif lower.startswith("javascript:"):
+                    diag.trace_collect_reject(href, "javascript")
+                elif any(lower.endswith(ext) for ext in (".jpg", ".jpeg", ".png", ".gif", ".webp")):
+                    diag.trace_collect_reject(href, "image")
+                else:
+                    diag.trace_collect_reject(href, "other")
             rejected += 1
             continue
         if url_filter and not url_filter(normalized):
+            if diag:
+                diag.trace_collect_reject(href, "regex_mismatch")
             rejected += 1
             continue
         if normalized in seen:
+            if diag:
+                diag.trace_collect_reject(href, "duplicate")
             rejected += 1
             continue
         clean_name = name.strip()
         if not clean_name:
+            if diag:
+                diag.trace_collect_reject(href, "parser_rejected")
             rejected += 1
             continue
         seen.add(normalized)
+        if diag:
+            diag.trace_collect_accept(normalized)
         items.append(ScannedItem(name=clean_name, url=normalized))
 
     return ScanResult(items=items, rejected_links=rejected, raw_candidates=raw)
@@ -86,7 +106,7 @@ def schema_org_products(ctx: PageContext) -> ScanResult:
                     if url and name:
                         candidates.append((url, name))
 
-    return collect_candidates(candidates, ctx.base)
+    return collect_candidates(candidates, ctx.base, ctx=ctx)
 
 
 def product_url_patterns(
@@ -113,7 +133,7 @@ def product_url_patterns(
             return True
         return any(kw in lower for kw in keywords) if keywords else True
 
-    return collect_candidates(candidates, ctx.base, url_filter=url_filter)
+    return collect_candidates(candidates, ctx.base, url_filter=url_filter, ctx=ctx)
 
 
 def product_card_selectors(
@@ -138,7 +158,7 @@ def product_card_selectors(
             name = title_el.get_text(strip=True) if title_el else link.get_text(strip=True)
             candidates.append((link["href"], name))
 
-    return collect_candidates(candidates, ctx.base, url_filter=url_filter)
+    return collect_candidates(candidates, ctx.base, url_filter=url_filter, ctx=ctx)
 
 
 def embedded_json_products(
@@ -188,13 +208,21 @@ def embedded_json_products(
                         url = normalize_url(f"/products/{url}", ctx.base)
                 url = str(url).strip()
                 if not name or not url:
+                    if ctx.diagnostics:
+                        ctx.diagnostics.trace_collect_reject(
+                            str(url or name or "?"), "parser_rejected"
+                        )
                     rejected += 1
                     continue
                 if url in seen:
+                    if ctx.diagnostics:
+                        ctx.diagnostics.trace_collect_reject(url, "duplicate")
                     rejected += 1
                     continue
                 seen.add(url)
                 price = _extract_listing_price(product)
+                if ctx.diagnostics:
+                    ctx.diagnostics.trace_collect_accept(url)
                 items.append(ScannedItem(name=name, url=url, price=price))
 
     return ScanResult(items=items, rejected_links=rejected, raw_candidates=raw)
@@ -214,7 +242,11 @@ def fetch_json_api(
     for api_url in build_urls(ctx):
         try:
             data = fetch_json(api_url, referer=ctx.url)
-        except (requests.RequestException, ValueError, json.JSONDecodeError):
+        except requests.RequestException:
+            if ctx.diagnostics:
+                ctx.diagnostics.trace_collect_reject(api_url, "fetch_failed")
+            continue
+        except (ValueError, json.JSONDecodeError):
             continue
 
         products = data.get("products") or data.get("items") or data
@@ -230,12 +262,18 @@ def fetch_json_api(
                 continue
             item = map_item(product, ctx.base)
             if not item:
+                if ctx.diagnostics:
+                    ctx.diagnostics.trace_collect_reject("json_item", "parser_rejected")
                 rejected += 1
                 continue
             if item.url in seen:
+                if ctx.diagnostics:
+                    ctx.diagnostics.trace_collect_reject(item.url, "duplicate")
                 rejected += 1
                 continue
             seen.add(item.url)
+            if ctx.diagnostics:
+                ctx.diagnostics.trace_collect_accept(item.url)
             items.append(item)
 
         if items:
@@ -265,7 +303,7 @@ def generic_product_like_links(ctx: PageContext) -> ScanResult:
             if len(name) >= 3:
                 candidates.append((link["href"], name))
 
-    return collect_candidates(candidates, ctx.base)
+    return collect_candidates(candidates, ctx.base, ctx=ctx)
 
 
 def generic_cms_cards(ctx: PageContext) -> ScanResult:

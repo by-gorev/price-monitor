@@ -15,10 +15,11 @@ StrategyFn = Callable[["PageContext"], ScanResult]
 class PageContext:
     """Загруженная страница — один HTTP-запрос на URL."""
 
-    def __init__(self, url: str, html: str, base: str):
+    def __init__(self, url: str, html: str, base: str, diagnostics=None):
         self.url = url
         self.html = html
         self.base = base
+        self.diagnostics = diagnostics
         self._soup: BeautifulSoup | None = None
 
     @classmethod

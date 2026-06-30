@@ -10,10 +10,11 @@ from app.parsers.base import BaseSiteParser
 from app.parsers.confidence import compute_strategy_confidence, is_strategy_acceptable
 from app.parsers.debug import ScanDebugContext
 from app.parsers.html_utils import extract_all_page_links
-from app.parsers.http import load_page_html
+from app.parsers.http import get_http_stats, load_page_html
 from app.parsers.page_context import PageContext, StrategyFn
-from app.parsers.parser_types import ParsedProduct, ScanResult, ScannedItem, StrategyResult
+from app.parsers.parser_types import ParsedProduct, ScanResult, StrategyResult
 from app.parsers.product_parse import parse_product_page
+from app.parsers.scan_diagnostics import ScanDiagnosticsCollector
 
 __all__ = ["BasePlatformParser", "PageContext", "StrategyFn"]
 
@@ -44,6 +45,22 @@ class BasePlatformParser(BaseSiteParser):
         if debug:
             debug.set_all_links(all_links)
 
+        diagnostics: ScanDiagnosticsCollector | None = None
+        if debug:
+            diagnostics = ScanDiagnosticsCollector(ctx.base)
+            debug.diagnostics = diagnostics
+            ctx.diagnostics = diagnostics
+            anchor_count = len(ctx.soup.find_all("a", href=True))
+            diagnostics.set_page_anchor_count(anchor_count)
+            diagnostics.begin_strategy("page_links")
+            for tag in ctx.soup.find_all("a", href=True):
+                href = tag.get("href", "")
+                norm, reason = diagnostics.classify_href(href)
+                if norm and not reason:
+                    diagnostics.record_accept(norm)
+                else:
+                    diagnostics.record_reject(href, reason or "not_product_url")
+
         cms_detected = True
         attempts: list[StrategyResult] = []
         total_rejected = 0
@@ -52,10 +69,31 @@ class BasePlatformParser(BaseSiteParser):
         for strategy_name, strategy_fn in self.scan_strategies:
             if debug:
                 debug.set_strategy(strategy_name)
+            if diagnostics:
+                diagnostics.begin_strategy(strategy_name)
 
             attempt = self._run_strategy(
                 strategy_name, strategy_fn, ctx, cms_detected
             )
+            if diagnostics:
+                funnel = diagnostics.finish_strategy(
+                    strategy_name,
+                    ScanResult(
+                        items=attempt.items,
+                        raw_candidates=attempt.raw_candidates,
+                        rejected_links=attempt.rejected_links,
+                    ),
+                    fetched=get_http_stats().product_pages_loaded,
+                )
+                attempt.funnel = {
+                    "links_found": funnel.links_found,
+                    "product_urls": funnel.product_urls,
+                    "unique": funnel.unique,
+                    "fetched": funnel.fetched,
+                    "parsed": funnel.parsed,
+                    "returned": funnel.returned,
+                }
+
             attempts.append(attempt)
             total_rejected += attempt.rejected_links
 
@@ -66,6 +104,26 @@ class BasePlatformParser(BaseSiteParser):
                 break
 
         elapsed = (time.perf_counter() - started) * 1000
+        diag_summary = {}
+        if diagnostics and debug:
+            best_funnel = None
+            if diagnostics.strategy_funnels:
+                best_funnel = max(
+                    diagnostics.strategy_funnels, key=lambda f: f.returned
+                )
+            final = diagnostics.build_final_funnel(
+                len(best.items) if best and best.items else 0,
+                best_funnel,
+            )
+            diag_summary = {
+                "links_found": final.links_found,
+                "product_urls": final.product_urls,
+                "unique": final.unique,
+                "fetched": final.fetched,
+                "parsed": final.parsed,
+                "returned": final.returned,
+                "loss_stage": final.loss_stage,
+            }
 
         if best and best.items:
             prices_found = best.prices_found
@@ -82,6 +140,7 @@ class BasePlatformParser(BaseSiteParser):
                 without_price=without,
             )
             result.strategy_attempts = attempts
+            result.diagnostics_summary = diag_summary
             if debug:
                 debug.set_confidence(best.confidence)
                 debug.set_scan_stats(
@@ -106,6 +165,7 @@ class BasePlatformParser(BaseSiteParser):
             rejected_links=total_rejected,
         )
         empty.strategy_attempts = attempts
+        empty.diagnostics_summary = diag_summary
         if debug:
             debug.set_strategy_attempts(attempts)
             debug.set_stage(attempts[-1].strategy_name if attempts else "no_strategies")
@@ -155,10 +215,12 @@ class BasePlatformParser(BaseSiteParser):
     def parse_product(
         self, url: str, selector_config: str | None = None
     ) -> ParsedProduct:
+        from app.parsers.fetch_diagnostics import trace_fetch_skip
         from app.parsers.http import get_listing_price
 
         listing = get_listing_price(url)
         if listing is not None:
+            trace_fetch_skip(url, "listing_price_cached")
             name, price = listing
             return ParsedProduct(name=name, price=price)
 

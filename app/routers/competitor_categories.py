@@ -1,7 +1,7 @@
 """
 Управление URL категорий конкурентов и сканирование товаров.
 """
-from fastapi import APIRouter, Depends, Form, Request
+from fastapi import APIRouter, Depends, Form, Query, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session, joinedload
@@ -16,7 +16,11 @@ templates = Jinja2Templates(directory="app/templates")
 
 
 @router.get("/", response_class=HTMLResponse)
-def competitor_categories_page(request: Request, db: Session = Depends(get_db)):
+def competitor_categories_page(
+    request: Request,
+    scan_error: str | None = Query(None),
+    db: Session = Depends(get_db),
+):
     """Страница привязки URL категорий конкурента к рыночным категориям."""
     entries = (
         db.query(CompetitorCategory)
@@ -37,6 +41,7 @@ def competitor_categories_page(request: Request, db: Session = Depends(get_db)):
             "entries": entries,
             "competitors": competitors,
             "categories": categories,
+            "scan_error": scan_error,
         },
     )
 
@@ -77,5 +82,20 @@ def run_scan(
     db: Session = Depends(get_db),
 ):
     """Сканировать одну категорию конкурента и обновить цены."""
-    scan_category(db, competitor_category_id)
+    from urllib.parse import quote
+
+    try:
+        result = scan_category(db, competitor_category_id)
+    except ValueError as exc:
+        return RedirectResponse(
+            url=f"/competitor-categories?scan_error={quote(str(exc))}",
+            status_code=303,
+        )
+
+    error = result.get("scan_error")
+    if error:
+        return RedirectResponse(
+            url=f"/competitor-categories?scan_error={quote(error)}",
+            status_code=303,
+        )
     return RedirectResponse(url="/competitor-categories", status_code=303)

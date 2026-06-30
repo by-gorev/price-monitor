@@ -128,8 +128,16 @@ def fetch_html(url: str, referer: str | None = None, page_type: str = "product")
     Загрузить HTML с кэшем и единой сессией.
     page_type: 'category' | 'product' | 'detect'
     """
+    from app.parsers.fetch_diagnostics import get_fetch_diagnostics
+
+    diag = get_fetch_diagnostics()
+    if diag:
+        diag.before_request(url, page_type)
+
     cached = _get_cached(url)
     if cached is not None:
+        if diag:
+            diag.mark_skip(url, "page_cache_hit")
         return cached
 
     ctx = get_http_context()
@@ -138,13 +146,26 @@ def fetch_html(url: str, referer: str | None = None, page_type: str = "product")
     headers = _referer(referer or url)
     try:
         response = ctx.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+        if diag:
+            diag.record_response(url, page_type, response.status_code, response.url)
         if response.status_code in _FATAL_HTTP_CODES:
-            raise FetchFatalError(url, response.status_code, f"HTTP {response.status_code}")
+            fatal = FetchFatalError(url, response.status_code, f"HTTP {response.status_code}")
+            if diag:
+                diag.record_exception(url, page_type, fatal)
+            raise fatal
         response.raise_for_status()
     except requests.Timeout as exc:
+        if diag:
+            diag.record_exception(url, page_type, exc)
         raise FetchFatalError(url, message="timeout") from exc
     except requests.ConnectionError as exc:
+        if diag:
+            diag.record_exception(url, page_type, exc)
         raise FetchFatalError(url, message="connection error") from exc
+    except Exception as exc:
+        if diag and not isinstance(exc, FetchFatalError):
+            diag.record_exception(url, page_type, exc)
+        raise
 
     response.encoding = response.apparent_encoding or "utf-8"
     html = response.text
@@ -165,10 +186,18 @@ def load_page_html(
     page_type: str = "product",
 ) -> str:
     """Загрузить HTML с учётом debug-контекста и кэша."""
+    from app.parsers.fetch_diagnostics import get_fetch_diagnostics, trace_fetch_skip
+
     if debug and debug.url == url and debug.last_html:
         get_http_context().stats.cached_pages_used += 1
         get_http_context().stats.skipped_requests += 1
+        if page_type == "product":
+            trace_fetch_skip(url, "debug_html_reuse")
         return debug.last_html
+
+    diag = get_fetch_diagnostics()
+    if diag:
+        diag.before_request(url, page_type)
 
     html = fetch_html(url, page_type=page_type)
     if debug:
