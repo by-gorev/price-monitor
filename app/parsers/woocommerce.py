@@ -40,11 +40,7 @@ class WooCommerceParser(BasePlatformParser):
         ),
         (
             "product_cards",
-            lambda c: product_card_selectors(
-                c,
-                WOOCOMMERCE_CARDS,
-                url_filter=lambda u: "product" in u.lower(),
-            ),
+            lambda c: product_card_selectors(c, WOOCOMMERCE_CARDS),
         ),
         ("schema_org", schema_org_products),
         ("embedded_json", embedded_json_products),

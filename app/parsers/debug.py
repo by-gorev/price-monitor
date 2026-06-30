@@ -44,6 +44,7 @@ class ScanDebugContext:
         self.diagnostics: ScanDiagnosticsCollector | None = None
         self.scan_error: str | None = None
         self.funnel_summary: dict = {}
+        self.final_price_stats: dict = {}
 
     def set_platform(self, name: str) -> None:
         self.platform = name
@@ -170,10 +171,8 @@ class ScanDebugContext:
         if not self.enabled:
             return
 
-        self._log(f"Найдено товаров: {items_found}")
+        self._log(f"Найдено товаров (скан категории): {items_found}")
         self._log(f"Уникальных: {self.unique_count or items_found}")
-        self._log(f"С ценой: {self.prices_found}")
-        self._log(f"Без цены: {self.without_price}")
         self._log(f"Отброшено ссылок: {self.rejected_links}")
 
         if self.funnel_summary:
@@ -224,6 +223,29 @@ class ScanDebugContext:
 
         if DEBUG_FETCH_PATH.exists():
             self._log(f"Fetch diagnostics: {DEBUG_FETCH_PATH}")
+        from app.parsers.price_diagnostics import DEBUG_PRICE_PATH
+
+        if DEBUG_PRICE_PATH.exists():
+            self._log(f"Price diagnostics: {DEBUG_PRICE_PATH}")
+
+    def finalize_prices(self, found: int, stats: dict) -> None:
+        """Итоговая статистика после parse_and_save (не с листинга)."""
+        self.found_count = found
+        self.final_price_stats = dict(stats)
+        self.prices_found = int(stats.get("with_price", 0))
+        self.without_price = int(stats.get("without_price", 0))
+
+        if not self.enabled:
+            return
+
+        self._log("—— Итог после обновления цен ——")
+        self._log(f"Найдено товаров: {found}")
+        self._log(f"Успешно сохранено: {stats.get('saved', 0)}")
+        self._log(f"Цена получена: {stats.get('with_price', 0)}")
+        self._log(f"Без цены: {stats.get('without_price', 0)}")
+        self._log(f"Ошибки парсинга: {stats.get('parse_errors', 0)}")
+        if stats.get("skipped"):
+            self._log(f"Пропущено (не обновлялись): {stats['skipped']}")
 
     def to_dict(self) -> dict:
         return {
@@ -243,6 +265,7 @@ class ScanDebugContext:
             "elapsed_ms": self.elapsed_ms,
             "error": self.scan_error,
             "funnel": self.funnel_summary,
+            "final_price_stats": self.final_price_stats,
             "summary": {
                 "cms": self.platform,
                 "parser": self.adapter,
@@ -251,6 +274,9 @@ class ScanDebugContext:
                 "unique": self.unique_count,
                 "with_price": self.prices_found,
                 "without_price": self.without_price,
+                "saved": self.final_price_stats.get("saved", 0),
+                "parse_errors": self.final_price_stats.get("parse_errors", 0),
+                "skipped": self.final_price_stats.get("skipped", 0),
                 "confidence": self.confidence,
                 "error": self.scan_error,
                 "funnel": self.funnel_summary,

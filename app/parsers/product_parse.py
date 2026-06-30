@@ -11,7 +11,11 @@ from app.parsers.parser_types import ParsedProduct
 from app.parsers.utils import parse_price_value
 
 
-def parse_from_selectors(html: str, selectors: dict) -> ParsedProduct | None:
+from app.parsers.price_diagnostics import trace_product_price
+from app.parsers.price_extract import collect_price_candidates, select_price
+
+
+def parse_from_selectors(html: str, selectors: dict, url: str = "") -> ParsedProduct | None:
     soup = BeautifulSoup(html, "html.parser")
     name = ""
     if selectors.get("name"):
@@ -19,20 +23,9 @@ def parse_from_selectors(html: str, selectors: dict) -> ParsedProduct | None:
         if el:
             name = el.get_text(strip=True)
 
-    price = None
-    if selectors.get("price"):
-        el = soup.select_one(selectors["price"])
-        if el:
-            attr = el.get("data-product-price-def") or el.get("content")
-            if attr:
-                price = parse_price_value(str(attr))
-            if price is None:
-                price = parse_price_value(el.get_text())
-
-    if price is None and selectors.get("price_meta"):
-        meta = soup.select_one(selectors["price_meta"])
-        if meta and meta.get("content"):
-            price = parse_price_value(meta["content"])
+    candidates = collect_price_candidates(soup, selectors)
+    price = select_price(candidates)
+    trace_product_price(url, name, candidates, price)
 
     if name and price is not None:
         return ParsedProduct(name=name, price=price)
@@ -131,7 +124,7 @@ def parse_product_page(
 ) -> ParsedProduct:
     """Последовательный запуск стратегий парсинга товара."""
     if selectors:
-        result = parse_from_selectors(html, selectors)
+        result = parse_from_selectors(html, selectors, url=url)
         if result:
             return result
 

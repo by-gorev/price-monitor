@@ -1,0 +1,245 @@
+#1	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke
+#1	Name	Светящиеся Шары Bubble (Баблс-Бобо) с наклейками со светящей лентой на палочке
+#1	candidate	.price-new	2 040.00 р.	2.0
+#1	candidate	.price .price-new	2 040.00 р.	2.0
+#1	candidate	#product .price	880.00 р.	880.0
+#1	candidate	#product .price	КУПИТЬ	
+#1	candidate	#product .price	Заказ в 1 клик	1.0
+#1	selected	2.0
+
+#2	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke
+#2	Name	Светящиеся Шары Bubble (Баблс-Бобо) Звезда со светящей лентой на палочке
+#2	candidate	#product .price	766.00 р.	766.0
+#2	candidate	#product .price	КУПИТЬ	
+#2	candidate	#product .price	Заказ в 1 клик	1.0
+#2	selected	766.0
+
+#3	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke
+#3	Name	Светящиеся Шары Bubble (Баблс-Бобо) со светящей лентой на палочке
+#3	candidate	#product .price	766.00 р.	766.0
+#3	candidate	#product .price	КУПИТЬ	
+#3	candidate	#product .price	Заказ в 1 клик	1.0
+#3	selected	766.0
+
+#4	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-
+#4	Name	Шарик Bubble «До луны и обратно»
+#4	candidate	.price-new	2 530.00 р.	2.0
+#4	candidate	.price-new	2 400.00 р.	2.0
+#4	candidate	.price-new	2 400.00 р.	2.0
+#4	candidate	.price .price-new	2 530.00 р.	2.0
+#4	candidate	.price .price-new	2 400.00 р.	2.0
+#4	candidate	.price .price-new	2 400.00 р.	2.0
+#4	candidate	#product .price	2 770.00 р.	2.0
+#4	candidate	#product .price	2 530.00 р.	2.0
+#4	candidate	#product .price	КУПИТЬ	
+#4	candidate	#product .price	Заказ в 1 клик	1.0
+#4	selected	2.0
+
+#5	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj
+#5	Name	Светящиеся Шары Bubble (Баблс-Бобо) с гелием, перьями и светящейся лентой
+#5	candidate	.price-new	2 280.00 р.	2.0
+#5	candidate	.price-new	2 400.00 р.	2.0
+#5	candidate	.price .price-new	2 280.00 р.	2.0
+#5	candidate	.price .price-new	2 400.00 р.	2.0
+#5	candidate	#product .price	2 446.00 р.	2.0
+#5	candidate	#product .price	2 280.00 р.	2.0
+#5	candidate	#product .price	КУПИТЬ	
+#5	candidate	#product .price	Заказ в 1 клик	1.0
+#5	selected	2.0
+
+#6	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj
+#6	Name	Светящиеся Шары Bubble (Баблс-Бобо) с гелием и светящейся лентой
+#6	candidate	.price-new	2 040.00 р.	2.0
+#6	candidate	.price-new	2 040.00 р.	2.0
+#6	candidate	.price .price-new	2 040.00 р.	2.0
+#6	candidate	.price .price-new	2 040.00 р.	2.0
+#6	candidate	#product .price	2 330.00 р.	2.0
+#6	candidate	#product .price	2 040.00 р.	2.0
+#6	candidate	#product .price	КУПИТЬ	
+#6	candidate	#product .price	Заказ в 1 клик	1.0
+#6	selected	2.0
+
+#7	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke
+#7	Name	Светящиеся Шары Bubble (Баблс-Бобо) с игрушкой со светящей лентой на палочке
+#7	candidate	#product .price	880.00 р.	880.0
+#7	candidate	#product .price	КУПИТЬ	
+#7	candidate	#product .price	Заказ в 1 клик	1.0
+#7	selected	880.0
+
+#8	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke
+#8	Name	Светящиеся Шары Bubble (Баблс-Бобо) Единорог со светящей лентой на палочке
+#8	candidate	#product .price	1 445 268 709.00 р.	1.0
+#8	candidate	#product .price	Закончился	
+#8	candidate	#product .price	Заказ в 1 клик	1.0
+#8	selected	1.0
+
+#9	URL	http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke
+#9	Name	Светящиеся Шары Bubble (Баблс-Бобо) Сердце со светящей лентой на палочке
+#9	candidate	.price-new	2 040.00 р.	2.0
+#9	candidate	.price-new	2 280.00 р.	2.0
+#9	candidate	.price .price-new	2 040.00 р.	2.0
+#9	candidate	.price .price-new	2 280.00 р.	2.0
+#9	candidate	#product .price	766.00 р.	766.0
+#9	candidate	#product .price	КУПИТЬ	
+#9	candidate	#product .price	Заказ в 1 клик	1.0
+#9	selected	2.0
+
+#10	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love
+#10	Name	Шарик BUBBLE Just Love
+#10	candidate	.price-new	2 400.00 р.	2.0
+#10	candidate	.price-new	2 400.00 р.	2.0
+#10	candidate	.price-new	2 530.00 р.	2.0
+#10	candidate	.price-new	2 400.00 р.	2.0
+#10	candidate	.price-new	2 400.00 р.	2.0
+#10	candidate	.price .price-new	2 400.00 р.	2.0
+#10	candidate	.price .price-new	2 400.00 р.	2.0
+#10	candidate	.price .price-new	2 530.00 р.	2.0
+#10	candidate	.price .price-new	2 400.00 р.	2.0
+#10	candidate	.price .price-new	2 400.00 р.	2.0
+#10	candidate	#product .price	2 660.00 р.	2.0
+#10	candidate	#product .price	2 400.00 р.	2.0
+#10	candidate	#product .price	КУПИТЬ	
+#10	candidate	#product .price	Заказ в 1 клик	1.0
+#10	selected	2.0
+
+#11	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-
+#11	Name	Шарик Bubble «Для самых близких»
+#11	candidate	.price-new	2 400.00 р.	2.0
+#11	candidate	.price-new	2 400.00 р.	2.0
+#11	candidate	.price .price-new	2 400.00 р.	2.0
+#11	candidate	.price .price-new	2 400.00 р.	2.0
+#11	candidate	#product .price	2 660.00 р.	2.0
+#11	candidate	#product .price	2 400.00 р.	2.0
+#11	candidate	#product .price	КУПИТЬ	
+#11	candidate	#product .price	Заказ в 1 клик	1.0
+#11	selected	2.0
+
+#12	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj
+#12	Name	Шарик Bubble «С Днем Рождения» розовый
+#12	candidate	.price-new	2 400.00 р.	2.0
+#12	candidate	.price-new	2 400.00 р.	2.0
+#12	candidate	.price-new	2 530.00 р.	2.0
+#12	candidate	.price-new	2 400.00 р.	2.0
+#12	candidate	.price-new	2 400.00 р.	2.0
+#12	candidate	.price .price-new	2 400.00 р.	2.0
+#12	candidate	.price .price-new	2 400.00 р.	2.0
+#12	candidate	.price .price-new	2 530.00 р.	2.0
+#12	candidate	.price .price-new	2 400.00 р.	2.0
+#12	candidate	.price .price-new	2 400.00 р.	2.0
+#12	candidate	#product .price	2 660.00 р.	2.0
+#12	candidate	#product .price	2 400.00 р.	2.0
+#12	candidate	#product .price	КУПИТЬ	
+#12	candidate	#product .price	Заказ в 1 клик	1.0
+#12	selected	2.0
+
+#13	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti
+#13	Name	Шарик BUBBLE с конфетти
+#13	candidate	.price-new	2 400.00 р.	2.0
+#13	candidate	.price-new	2 400.00 р.	2.0
+#13	candidate	.price-new	2 400.00 р.	2.0
+#13	candidate	.price-new	2 400.00 р.	2.0
+#13	candidate	.price-new	2 530.00 р.	2.0
+#13	candidate	.price .price-new	2 400.00 р.	2.0
+#13	candidate	.price .price-new	2 400.00 р.	2.0
+#13	candidate	.price .price-new	2 400.00 р.	2.0
+#13	candidate	.price .price-new	2 400.00 р.	2.0
+#13	candidate	.price .price-new	2 530.00 р.	2.0
+#13	candidate	#product .price	2 660.00 р.	2.0
+#13	candidate	#product .price	2 400.00 р.	2.0
+#13	candidate	#product .price	КУПИТЬ	
+#13	candidate	#product .price	Заказ в 1 клик	1.0
+#13	selected	2.0
+
+#14	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost
+#14	Name	Шарик BUBBLE Нежность
+#14	candidate	.price-new	2 400.00 р.	2.0
+#14	candidate	.price-new	2 400.00 р.	2.0
+#14	candidate	.price-new	2 400.00 р.	2.0
+#14	candidate	.price-new	2 400.00 р.	2.0
+#14	candidate	.price-new	2 400.00 р.	2.0
+#14	candidate	.price .price-new	2 400.00 р.	2.0
+#14	candidate	.price .price-new	2 400.00 р.	2.0
+#14	candidate	.price .price-new	2 400.00 р.	2.0
+#14	candidate	.price .price-new	2 400.00 р.	2.0
+#14	candidate	.price .price-new	2 400.00 р.	2.0
+#14	candidate	#product .price	2 660.00 р.	2.0
+#14	candidate	#product .price	2 400.00 р.	2.0
+#14	candidate	#product .price	КУПИТЬ	
+#14	candidate	#product .price	Заказ в 1 клик	1.0
+#14	selected	2.0
+
+#15	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami
+#15	Name	Шарик BUBBLE с яркими перьями
+#15	candidate	.price-new	2 400.00 р.	2.0
+#15	candidate	.price-new	2 400.00 р.	2.0
+#15	candidate	.price-new	2 400.00 р.	2.0
+#15	candidate	.price-new	2 530.00 р.	2.0
+#15	candidate	.price-new	2 400.00 р.	2.0
+#15	candidate	.price .price-new	2 400.00 р.	2.0
+#15	candidate	.price .price-new	2 400.00 р.	2.0
+#15	candidate	.price .price-new	2 400.00 р.	2.0
+#15	candidate	.price .price-new	2 530.00 р.	2.0
+#15	candidate	.price .price-new	2 400.00 р.	2.0
+#15	candidate	#product .price	2 660.00 р.	2.0
+#15	candidate	#product .price	2 400.00 р.	2.0
+#15	candidate	#product .price	КУПИТЬ	
+#15	candidate	#product .price	Заказ в 1 клик	1.0
+#15	selected	2.0
+
+#16	URL	http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni
+#16	Name	Шарик BUBBLE Краски Осени
+#16	candidate	.price-new	2 400.00 р.	2.0
+#16	candidate	.price-new	2 400.00 р.	2.0
+#16	candidate	.price-new	2 400.00 р.	2.0
+#16	candidate	.price-new	2 400.00 р.	2.0
+#16	candidate	.price-new	2 400.00 р.	2.0
+#16	candidate	.price .price-new	2 400.00 р.	2.0
+#16	candidate	.price .price-new	2 400.00 р.	2.0
+#16	candidate	.price .price-new	2 400.00 р.	2.0
+#16	candidate	.price .price-new	2 400.00 р.	2.0
+#16	candidate	.price .price-new	2 400.00 р.	2.0
+#16	candidate	#product .price	2 660.00 р.	2.0
+#16	candidate	#product .price	2 400.00 р.	2.0
+#16	candidate	#product .price	КУПИТЬ	
+#16	candidate	#product .price	Заказ в 1 клик	1.0
+#16	selected	2.0
+
+#17	URL	http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina
+#17	Name	Шар BUBBLE DECO 24" Паутина
+#17	candidate	.price-new	1 920.00 р.	1.0
+#17	candidate	.price-new	1 920.00 р.	1.0
+#17	candidate	.price .price-new	1 920.00 р.	1.0
+#17	candidate	.price .price-new	1 920.00 р.	1.0
+#17	candidate	#product .price	1 210.00 р.	1.0
+#17	candidate	#product .price	КУПИТЬ	
+#17	candidate	#product .price	Заказ в 1 клик	1.0
+#17	selected	1.0
+
+#18	URL	http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy
+#18	Name	Шар BUBBLE 22" Зелье летающей ведьмы
+#18	candidate	.price-new	2 400.00 р.	2.0
+#18	candidate	.price .price-new	2 400.00 р.	2.0
+#18	candidate	#product .price	1 210.00 р.	1.0
+#18	candidate	#product .price	КУПИТЬ	
+#18	candidate	#product .price	Заказ в 1 клик	1.0
+#18	selected	2.0
+
+#19	URL	http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka
+#19	Name	Шар BUBBLE 22" Тыква Светильник Джека
+#19	candidate	.price-new	2 400.00 р.	2.0
+#19	candidate	.price .price-new	2 400.00 р.	2.0
+#19	candidate	#product .price	1 445 268 709.00 р.	1.0
+#19	candidate	#product .price	Закончился	
+#19	candidate	#product .price	Заказ в 1 клик	1.0
+#19	selected	2.0
+
+#20	URL	http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate
+#20	Name	Шар BUBBLE 22" Тыквы Джека на закате
+#20	candidate	.price-new	2 400.00 р.	2.0
+#20	candidate	.price-new	1 920.00 р.	1.0
+#20	candidate	.price .price-new	2 400.00 р.	2.0
+#20	candidate	.price .price-new	1 920.00 р.	1.0
+#20	candidate	#product .price	1 210.00 р.	1.0
+#20	candidate	#product .price	КУПИТЬ	
+#20	candidate	#product .price	Заказ в 1 клик	1.0
+#20	selected	2.0

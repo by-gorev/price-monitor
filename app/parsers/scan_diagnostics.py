@@ -264,6 +264,14 @@ class ScanDiagnosticsCollector:
                     break
         return out
 
+    def rejection_counts(self) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for rec in self.link_records:
+            if rec.accepted or not rec.reason:
+                continue
+            counts[rec.reason] = counts.get(rec.reason, 0) + 1
+        return counts
+
     def rejected_urls(self, limit: int = 20) -> list[tuple[str, str]]:
         seen: set[str] = set()
         out: list[tuple[str, str]] = []
@@ -329,6 +337,11 @@ class ScanDiagnosticsCollector:
                 print("[SCAN WARNING] First 20 rejected URLs:")
                 for url, reason in rejected:
                     print(f"  - {url} ({reason})")
+            counts = self.rejection_counts()
+            if counts:
+                summary = ", ".join(f"{k}={v}" for k, v in sorted(counts.items()))
+                print(f"[SCAN WARNING] Rejection breakdown: {summary}")
+                logger.warning("[SCAN WARNING] Rejection breakdown: %s", summary)
 
 
 def format_scan_error(exc: Exception) -> str:

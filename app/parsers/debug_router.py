@@ -5,7 +5,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app.parsers.debug_store import get_last_scan_summary, get_scan_history
+from app.parsers.debug_store import get_last_price_debug, get_last_scan_summary, get_scan_history
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -20,5 +20,6 @@ def parser_debug_page(request: Request):
         context={
             "history": get_scan_history(limit=20),
             "last_summary": get_last_scan_summary(),
+            "price_debug": get_last_price_debug(),
         },
     )

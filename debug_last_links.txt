@@ -189,243 +189,243 @@ http://shariki52.ru/dostavka_i_oplata	page_links	no	not_product_url
 http://shariki52.ru/privacy	page_links	no	blacklist
 http://shariki52.ru/terms	page_links	no	not_product_url
 http://shariki52.ru/fortune	page_links	no	not_product_url
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	regex_mismatch
-http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	regex_mismatch
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	parser_rejected
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	yes	
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-naklejkami-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-zvezda-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-do-luny-i-obratno-	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-peryami-i-svetyaschejsya-lentoj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-geliem-i-svetyaschejsya-lentoj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-s-igrushkoj-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-edinorog-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/svetyaschiesya-shary-bubble-babls-bobo-serdtse-so-svetyaschej-lentoj-na-palochke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-just-love	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-dlya-samyh-blizkih-	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-dnem-rogdeniya-rozovyj	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-konfetti	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-negnost	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-s-yarkimi-peryami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/sharik-bubble-kraski-oseni	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-deco-24-pautina	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-zele-letayuschej-vedmy	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykva-svetilnik-dgeka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-tykvy-dgeka-na-zakate	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-privideniya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-svetilnik-dgeka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-universitet-monstrov	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-disney-printsessy	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-22-bubble-minni	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-1-god	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-vinni-i-druzya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-zolushka	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-i-ego-druzya	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-mikki-park	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-samolety	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-tachki-na-treke	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-fei	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-disney-holodnoe-serdtse	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-keksy-raznotsvetnye	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-svechi	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-syurpriz	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-hb-tort-so-svechkami-shary	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-mstiteli	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-marvel-chelovek-pauk	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-vecherinka-zverej-56-sm	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-gubka-bob	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-diplomy-shary-shapochki	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-keksy-raznotsvetnye	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-martyshki-s-serdechkami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-mishka-plyushevyj-s-sharami	product_cards	no	duplicate
+http://shariki52.ru/gelievye-shary/shary-bubble/shar-bubble-22-planeta-zemlya	product_cards	no	duplicate

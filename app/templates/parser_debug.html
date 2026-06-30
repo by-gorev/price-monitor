@@ -14,9 +14,14 @@
             <tr><th>Parser</th><td>{{ last_summary.parser or "—" }}</td></tr>
             <tr><th>Strategy</th><td>{{ last_summary.strategy or "—" }}</td></tr>
             <tr><th>Найдено товаров</th><td>{{ last_summary.found }}</td></tr>
-            <tr><th>Уникальных</th><td>{{ last_summary.unique }}</td></tr>
-            <tr><th>С ценой</th><td>{{ last_summary.with_price }}</td></tr>
+            <tr><th>Успешно сохранено</th><td>{{ last_summary.saved | default(0) }}</td></tr>
+            <tr><th>Цена получена</th><td>{{ last_summary.with_price }}</td></tr>
             <tr><th>Без цены</th><td>{{ last_summary.without_price }}</td></tr>
+            <tr><th>Ошибки парсинга</th><td>{{ last_summary.parse_errors | default(0) }}</td></tr>
+            {% if last_summary.skipped %}
+            <tr><th>Пропущено</th><td>{{ last_summary.skipped }}</td></tr>
+            {% endif %}
+            <tr><th>Уникальных</th><td>{{ last_summary.unique }}</td></tr>
             <tr><th>Confidence</th><td>{{ last_summary.confidence }}</td></tr>
             <tr><th>Ошибок</th><td>{{ last_summary.errors }}</td></tr>
             {% if last_summary.error %}
@@ -39,6 +44,32 @@
 </div>
 {% endif %}
 
+{% if price_debug %}
+<div class="form-section">
+    <h3>Диагностика цен (последнее обновление)</h3>
+    {% for item in price_debug %}
+    <div class="matching-row" style="display:block; margin-bottom:1rem;">
+        <p><strong>{{ loop.index }}.</strong> <a href="{{ item.url }}" target="_blank">{{ item.name or item.url }}</a></p>
+        <p><strong>Price candidates:</strong></p>
+        {% if item.price_candidates %}
+        <ul>
+            {% for c in item.price_candidates %}
+            <li>
+                <code>{{ c.selector }}</code><br>
+                raw: {{ c.raw }}<br>
+                normalized: {{ c.normalized if c.normalized is not none else "—" }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p><em>кандидаты не найдены</em></p>
+        {% endif %}
+        <p><strong>Selected price:</strong> {{ item.selected_price if item.selected_price is not none else "—" }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 <h3>История запусков</h3>
 {% if history %}
 {% for run in history %}
@@ -51,8 +82,10 @@
         Strategy: {{ run.strategy_name or "—" }} |
         Confidence: {{ run.confidence }} |
         Товаров: {{ run.products_found }} |
-        С ценой: {{ run.prices_found }} |
+        Сохранено: {{ run.summary.saved | default(run.prices_found) }} |
+        Цена получена: {{ run.prices_found }} |
         Без цены: {{ run.without_price }} |
+        Ошибки: {{ run.summary.parse_errors | default(0) }} |
         {{ run.elapsed_ms }} мс
     </p>
     {% if run.errors %}
